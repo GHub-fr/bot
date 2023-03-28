@@ -27,11 +27,6 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - run: mkdir artifact && cp target/*.jar artifact
-    
-#    - uses: actions/upload-artifact@v3
-#      with:
-#        name: bot
-#        path: /home/runner/work/bot/bot/artifact/bot-1.0-SNAPSHOT-fat.jar
 
     - name: Release
       uses: softprops/action-gh-release@v1
