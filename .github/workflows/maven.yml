@@ -27,5 +27,5 @@ jobs:
     
     - uses: actions/upload-artifact@v3
       with:
-        name: bot.jar
-        path: /home/runner/work/bot/bot/artifact/bot-1.0-SNAPSHOT.jar
+        name: bot
+        path: /home/runner/work/bot/bot/artifact/bot-1.0-SNAPSHOT-fat.jar
