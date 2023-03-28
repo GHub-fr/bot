@@ -36,5 +36,5 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ github.sha }}
+        tag_name: ${{ github.run_number }}
         files: /home/runner/work/bot/bot/artifact/bot-1.0-SNAPSHOT-fat.jar
