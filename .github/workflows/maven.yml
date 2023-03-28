@@ -28,13 +28,13 @@ jobs:
 
     - run: mkdir artifact && cp target/*.jar artifact
     
-    - uses: actions/upload-artifact@v3
-      with:
-        name: bot
-        path: /home/runner/work/bot/bot/artifact/bot-1.0-SNAPSHOT-fat.jar
+#    - uses: actions/upload-artifact@v3
+#      with:
+#        name: bot
+#        path: /home/runner/work/bot/bot/artifact/bot-1.0-SNAPSHOT-fat.jar
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: Release
+        tag_name: ${{ steps.tag.outputs.release_tag }}
         files: /home/runner/work/bot/bot/artifact/bot-1.0-SNAPSHOT-fat.jar
