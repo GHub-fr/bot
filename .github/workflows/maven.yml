@@ -32,4 +32,4 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: v.${{ github.run_number }}
-        files: /home/runner/work/bot/bot/artifact/bot-1.0-SNAPSHOT-fat.jar
+        files: /home/runner/work/bot/bot/artifact/bot-1.0-fat.jar
