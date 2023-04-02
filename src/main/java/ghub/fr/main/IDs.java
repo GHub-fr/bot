@@ -85,7 +85,7 @@ public class IDs {
     //
     public static final String CasinoBoutique = "1081940864420548668";
     public static final String CasinoDailyClick = "1082775165366177912";
-    public static final String CasinoCoinFlip = "1082775318751891506";
+    public static final String CasinoCoinFlip = "1092029640845041694";
     public static int prixCoinFlip = 1000;
     //
     public static final String EmojiChargement = "<:chargement:1083509029332078622>";
