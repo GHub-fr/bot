@@ -22,7 +22,7 @@ public class events {
         Tops.Start();
         userAcceptRules.onUserAcceptRules();
         boutique.onBoutique();
-        casinoMiniJeux.startCoinFlip();
+        casinoCoinFlip.startCoinFlip();
         casinoDailyClicker.onCasinoDailyClicker();
         messageLogger.onMessageLogger();
         //

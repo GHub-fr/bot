@@ -5,7 +5,7 @@ import org.javacord.api.interaction.SlashCommandBuilder;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
 
-import ghub.fr.listener.casinoMiniJeux;
+import ghub.fr.listener.casinoCoinFlip;
 import ghub.fr.listener.createButton;
 import ghub.fr.main.main;
 
@@ -27,7 +27,7 @@ public class commands {
                 copyMessage.onCopyMessage();
                 createInvite.onCreateInvite();
                 help.onHelp();
-                casinoMiniJeux.coinFlipCmd();
+                casinoCoinFlip.coinFlipCmd();
                 createButton.onCreateButton();
         }
 

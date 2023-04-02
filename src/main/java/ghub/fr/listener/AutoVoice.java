@@ -6,7 +6,6 @@ import org.javacord.api.entity.permission.PermissionType;
 import org.javacord.api.entity.permission.Permissions;
 import org.javacord.api.entity.permission.PermissionsBuilder;
 
-import ghub.fr.commands.mute;
 import ghub.fr.main.IDs;
 import ghub.fr.main.main;
 
@@ -25,7 +24,6 @@ public class AutoVoice {
     public static void VoiceChannelCreator() throws IOException, ExecutionException, InterruptedException {
         main.api.addServerVoiceChannelMemberJoinListener(event -> {
             try {
-
                 if (IDs.VoiceChannelsCreator().contains(event.getChannel().getIdAsString())) {
                     Permissions permissions = new PermissionsBuilder().setAllowed(PermissionType.MANAGE_CHANNELS)
                             .build();

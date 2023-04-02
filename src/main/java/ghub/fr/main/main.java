@@ -11,7 +11,7 @@ public class main {
 
     public static void SetDiscordApi(token.account account) throws IOException {
         DiscordApiBuilder apiBuilder = new DiscordApiBuilder();
-        apiBuilder.setToken(token.token(account));
+        apiBuilder.setToken(token.getToken(account));
         apiBuilder.setAllIntents();
         api = apiBuilder.login().join();
     }

@@ -10,11 +10,11 @@ import org.javacord.api.interaction.callback.InteractionImmediateResponseBuilder
 import ghub.fr.main.IDs;
 import ghub.fr.main.main;
 
-public class casinoMiniJeux {
+public class casinoCoinFlip {
     public static void startCoinFlip() {
         main.api.addReactionAddListener(event -> {
             try {
-                if (event.getChannel().getIdAsString().equals(IDs.CasinoMiniJeux) && !event.getUser().get().isBot()) {
+                if (event.getChannel().getIdAsString().equals(IDs.CasinoCoinFlip) && !event.getUser().get().isBot()) {
 
                     String mentionTagEmoji = event.getEmoji().getMentionTag();
                     event.removeReaction();

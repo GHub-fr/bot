@@ -19,11 +19,10 @@ public class token {
         return file;
     }
 
-    public static String token(account bot) throws IOException {
+    public static String getToken(account bot) throws IOException {
         if (DiscordBotTokens().exists()) {
             FileConfiguration fileConfiguration = YamlConfiguration
                     .loadConfiguration(DiscordBotTokens());
-
             return fileConfiguration.getString(bot.toString());
         } else {
             DiscordBotTokens().createNewFile();
