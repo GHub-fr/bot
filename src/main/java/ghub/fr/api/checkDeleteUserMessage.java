@@ -42,8 +42,7 @@ public class checkDeleteUserMessage {
     public static void deleteAllMessageFromChannel(ServerTextChannel serverTextChannel, String reason, User whoRun)
             throws ExecutionException, InterruptedException {
         Thread thread = new Thread(() -> {
-            main.api.getChannelById(IDs.LogsCmd).get().asServerTextChannel().get()
-                    .sendMessage(reason + " : " + serverTextChannel.getMentionTag() + " par " + whoRun.getMentionTag());
+            logCommands.logCommandChannel("emptyChannel", reason, serverTextChannel, whoRun);
             for (Message message : serverTextChannel.getMessagesAsStream().toList()) {
                 Thread.interrupted();
                 message.delete();
