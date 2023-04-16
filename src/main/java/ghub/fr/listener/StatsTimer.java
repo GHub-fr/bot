@@ -75,7 +75,7 @@ public class StatsTimer {
                 Date date = new Date();
                 date.setMinutes(date.getMinutes() + 15);
                 long time2 = date.toInstant().getEpochSecond();
-                String finalMessage = "<t:" + time + ":R>" + ", prochain dans 15min : " + "<t:" + time2 + ":R>"+ "\n\n" + MessageUser + "\n\n" + StringroleLess
+                String finalMessage = "<t:" + time + ":R>" + ", prochain : " + "<t:" + time2 + ":R>"+ "\n\n" + MessageUser + "\n\n" + StringroleLess
                         + "\n" + everHereOne + "\n" + RulesOnly + "\n\n" + MessageRole;
                 try {
                     main.api.getServerById(IDs.serverID).get().getChannelById(IDs.Statistiques).get()

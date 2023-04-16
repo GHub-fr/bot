@@ -84,7 +84,7 @@ public class Tops {
                 Date date = new Date();
                 date.setHours(date.getHours() + 8);
                 long time2 = date.toInstant().getEpochSecond();
-                msgFinalCategorie += "<t:" + time + ":R>" + ", prochain dans 8h : " + "<t:" + time2 + ":R>" + msgGold;
+                msgFinalCategorie += "<t:" + time + ":R>" + ", prochain : " + "<t:" + time2 + ":R>" + msgGold;
             } else if (IsMsg) {
                 msgFinalCategorie += msgMsg;
             } else if (IsInvite) {
