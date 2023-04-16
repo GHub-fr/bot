@@ -9,6 +9,7 @@ import ghub.fr.main.main;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
@@ -63,13 +64,18 @@ public class StatsTimer {
                 String MessageUser = ":green_circle: **En ligne** : " + Online + "\n" + ":red_circle: **Hors ligne** : "
                         + Offline + "\n" + ":no_entry: **Ne pas déranger** : " + DND + "\n"
                         + ":crescent_moon: **Absent** : " + IDLE + "\n" + ":robot: Bot : " + Bot;
-                Date date = new Date();
+
                 Role everyone = IDs.RoleEveryone;
 
                 String everHereOne = rolesString(everyone);
                 String StringroleLess = IDs.EmojiRocket + " Sans rôle : " + roleLess;
                 String RulesOnly = IDs.RoleReglesValides.getMentionTag() + " uniquement : " + onlyRules;
-                String finalMessage = DateFormated(date) + " (15min)" + "\n\n" + MessageUser + "\n\n" + StringroleLess
+
+                long time = Instant.now().getEpochSecond();
+                Date date = new Date();
+                date.setMinutes(date.getMinutes() + 15);
+                long time2 = date.toInstant().getEpochSecond();
+                String finalMessage = "<t:" + time + ":R>" + ", prochain dans 15min : " + "<t:" + time2 + ":R>"+ "\n\n" + MessageUser + "\n\n" + StringroleLess
                         + "\n" + everHereOne + "\n" + RulesOnly + "\n\n" + MessageRole;
                 try {
                     main.api.getServerById(IDs.serverID).get().getChannelById(IDs.Statistiques).get()

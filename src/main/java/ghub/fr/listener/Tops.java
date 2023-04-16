@@ -10,6 +10,7 @@ import ghub.fr.main.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
@@ -79,8 +80,11 @@ public class Tops {
             Update(IsGold, IsMsg, IsInvite);
         } else {
             if (IsGold) {
+                long time = Instant.now().getEpochSecond();
                 Date date = new Date();
-                msgFinalCategorie += StatsTimer.DateFormated(date) + " (8h)" + msgGold;
+                date.setHours(date.getHours() + 8);
+                long time2 = date.toInstant().getEpochSecond();
+                msgFinalCategorie += "<t:" + time + ":R>" + ", prochain dans 8h : " + "<t:" + time2 + ":R>" + msgGold;
             } else if (IsMsg) {
                 msgFinalCategorie += msgMsg;
             } else if (IsInvite) {
