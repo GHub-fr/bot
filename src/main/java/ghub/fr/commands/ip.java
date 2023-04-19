@@ -40,13 +40,16 @@ public class ip {
         ServerTextChannel MinecraftUptime = main.api.getServerTextChannelById(IDs.MinecraftUptime).get();
         ServerTextChannel MinecraftMAJ = main.api.getServerTextChannelById(IDs.MinecraftMAJ).get();
 
-        embedBuilder.addField("Salons : ", MinecraftInfo.getMentionTag() + "\n" + MinecraftReboot.getMentionTag() + "\n" + MinecraftUptime.getMentionTag() + "\n" + MinecraftMAJ.getMentionTag());
+        embedBuilder.addField("Salons : ", MinecraftInfo.getMentionTag() + "\n" + MinecraftReboot.getMentionTag() + "\n"
+                + MinecraftUptime.getMentionTag() + "\n" + MinecraftMAJ.getMentionTag());
 
+        String string = "";
         for (User user : main.api.getServerById(IDs.serverID).get().getMembers()) {
             if (user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(IDs.RoleBotsMC)) {
-                embedBuilder.addInlineField(user.getName(), user.getMentionTag());
+                string += "\n" + user.getMentionTag();
             }
         }
+        embedBuilder.addField("Serveurs : ", string);
 
         return embedBuilder;
     }
