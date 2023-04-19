@@ -44,7 +44,7 @@ public class ip {
 
         for (User user : main.api.getServerById(IDs.serverID).get().getMembers()) {
             if (user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(IDs.RoleBotsMC)) {
-                embedBuilder.addInlineField(user.getName().split(".")[0], user.getMentionTag());
+                embedBuilder.addInlineField(user.getName(), user.getMentionTag());
             }
         }
 
