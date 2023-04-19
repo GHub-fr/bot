@@ -68,6 +68,12 @@ public class IDs {
     //
     public static final String serverID = "1081921426333909072";
     //
+    public static final String MinecraftInfo = "1092924495368564777";
+    public static final String MinecraftReboot = "1081945572744892466";
+    public static final String MinecraftUptime = "1093591413159112847";
+    public static final String MinecraftMAJ = "1093593961597259817";
+    
+    //
     public static final String Notifications = "1082075867037061210";
     public static final String Profil = "1082076166158037104";
     public static final String AutresJeux = "1082075634374807562";
@@ -105,6 +111,7 @@ public class IDs {
     public static final String EmojiXBox = "<:xbox:1083508857982177390>";
     public static final String EmojiPS = "<:ps:1083508929956425729>";
     public static final String EmojiSwitch = "<:switch:1083508846871449680>";
+    //
     public static final String EmojiJava = "<:java:1083508962139312158>";
     public static final String EmojiBedrock = "<:bedrock:1083509091827208272>";
     public static final String EmojiMinecraft = "<:Minecraft:1083508972402782218>";
