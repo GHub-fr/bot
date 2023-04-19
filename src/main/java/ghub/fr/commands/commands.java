@@ -29,6 +29,7 @@ public class commands {
                 help.onHelp();
                 casinoCoinFlip.coinFlipCmd();
                 createButton.onCreateButton();
+                ip.onIP();
         }
 
         /*
@@ -49,6 +50,7 @@ public class commands {
                 arrays.add(Help());
                 arrays.add(CoinFlip());
                 arrays.add(CreateButton());
+                arrays.add(IP());
                 return arrays.stream().toList();
         }
 
@@ -108,6 +110,10 @@ public class commands {
 
         public static SlashCommandBuilder Ping() {
                 return new SlashCommandBuilder().setName("ping").setDescription("Ping le bot ghub.fr");
+        }
+
+        public static SlashCommandBuilder IP() {
+                return new SlashCommandBuilder().setName("ip").setDescription("Affiche les adresses serveurs");
         }
 
         public static SlashCommandBuilder Help() {
