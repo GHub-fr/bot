@@ -35,7 +35,7 @@ public class ip {
         embedBuilder.setTitle("📚 IP/DNS d'" + main.api.getYourself().getName());
         embedBuilder.addField("@", "GHub.fr  ou  play.ghub.fr");
 
-        for (User user : main.api.getServerById("").get().getMembers()) {
+        for (User user : main.api.getServerById(IDs.serverID).get().getMembers()) {
             if (user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(IDs.RoleBotsMC)) {
                 embedBuilder.addField(user.getName(), user.getMentionTag());
             }
