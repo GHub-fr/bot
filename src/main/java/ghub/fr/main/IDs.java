@@ -14,6 +14,7 @@ public class IDs {
     public static final int defaultRoleSizeWithSplitterAndRulesAndEveryOne = RolesSplitterList().size() + 1 + 1;
 
     public static final Role RoleEveryone = main.api.getRoleById("1081921426333909072").get();
+    public static final Role RoleBotsMC = main.api.getRoleById("1081965950905098310").get();
     //
     public static final Role RoleReglesValides = main.api.getRoleById("1081964412480528464").get();
     public static final Role RoleCasinoBypass = main.api.getRoleById("1081955127667212439").get();
