@@ -34,13 +34,13 @@ public class casinoCoinFlip {
         if (goldAmount >= prix) {
             double rng = Math.random();
             if (rng > 0.5) {
-                main.api.getServerTextChannelById(IDs.TextuelGeneral).get()
+                main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
                         .sendMessage(casinoProfil.gainGold(user, -prix,
                                 "Coin flip perdu",
                                 serverTextChannel));
                 return 0;
             } else {
-                main.api.getServerTextChannelById(IDs.TextuelGeneral).get()
+                main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
                         .sendMessage(casinoProfil.gainGold(user, prix,
                                 "Coin flip gagné",
                                 serverTextChannel));
@@ -81,7 +81,7 @@ public class casinoCoinFlip {
                     interactionImmediateResponseBuilder
                             .setContent(event.getSlashCommandInteraction().getUser().getMentionTag()
                                     + " coin flip lancé : "
-                                    + main.api.getServerTextChannelById(IDs.TextuelGeneral).get().getMentionTag()
+                                    + main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get().getMentionTag()
                                     + ", " + str);
                     interactionImmediateResponseBuilder.respond();
                 } catch (Exception e) {

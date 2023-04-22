@@ -16,7 +16,7 @@ public class casinoDailyClicker {
 
                     if (mentionTagEmoji.equals(IDs.EmojiProfil)) // profil
                     {
-                        main.api.getServerTextChannelById(IDs.TextuelGeneral).get()
+                        main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
                                 .sendMessage(casinoProfil.profil(event.getUser().get()));
                     }
 
@@ -26,7 +26,7 @@ public class casinoDailyClicker {
                                 .getRoles(event.getServer().get()).contains(IDs.RoleCasinoBypass)) {
                             casinoProfil.clickDoPassif(event.getUser().get());
                             casinoProfil.UpdatePlayDate(event.getUser().get(), "DayliClaim");
-                            main.api.getServerTextChannelById(IDs.TextuelGeneral).get().sendMessage(
+                            main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get().sendMessage(
                                     casinoProfil.gainGold(event.getUser().get(), 250, "Clique journalier",
                                             event.getChannel().asServerTextChannel().get()));
                         } else {
@@ -40,7 +40,7 @@ public class casinoDailyClicker {
                         int playPassifAmount = casinoProfil.GetPlayPassif(event.getUser().get());
                         if (playPassifAmount >= 1) {
                             casinoProfil.UpdatePlayPassif(event.getUser().get(), -playPassifAmount);
-                            main.api.getServerTextChannelById(IDs.TextuelGeneral).get()
+                            main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
                                     .sendMessage(casinoProfil.gainGold(event.getUser().get(), playPassifAmount,
                                             "Gains passifs",
                                             event.getChannel().asServerTextChannel().get()));

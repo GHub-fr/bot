@@ -72,7 +72,7 @@ public class IDs {
     public static final String MinecraftReboot = "1081945572744892466";
     public static final String MinecraftUptime = "1093591413159112847";
     public static final String MinecraftMAJ = "1093593961597259817";
-    
+
     //
     public static final String Notifications = "1082075867037061210";
     public static final String Profil = "1082076166158037104";
@@ -88,7 +88,7 @@ public class IDs {
     public static final String Statistiques = "1081940710799978546";
     public static final String Tops = "1081940819235319808";
     public static final String AFKVoice = "1081943448514482246";
-    public static final String TextuelGeneral = "1081942524161167381";
+    public static final String CasinoTextuelResultat = "1081943163985469511";//commandes
     //
     public static final String CasinoBoutique = "1081940864420548668";
     public static final String CasinoDailyClick = "1082775165366177912";
