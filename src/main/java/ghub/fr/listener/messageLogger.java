@@ -59,7 +59,7 @@ public class messageLogger {
             if (event.getMessageAuthor().isPresent() && event.getMessageAuthor().get().asUser().isPresent()
                     && event.getMessageAuthor().get().asUser().get().isBot()) {
                 return;
-            } else {
+            } else if (event.getMessageAuthor().isPresent() && event.getMessageAuthor().get().asUser().isPresent()) {
                 main.api.getServerTextChannelById(IDs.LogsMessage).get()
                         .sendMessage(embed("__**Message modifié**__ : "
                                 + event.getMessageAuthor().get().asUser().get().getMentionTag()

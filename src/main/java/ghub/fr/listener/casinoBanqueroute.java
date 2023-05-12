@@ -19,7 +19,6 @@ import ghub.fr.main.main;
 public class casinoBanqueroute {
     public static void startBanqueroute() throws IOException, InterruptedException, ExecutionException {
         setAutoUP();
-        updateMessage();
         main.api.addReactionAddListener(event -> {
             try {
                 if (event.getChannel().getIdAsString().equals(IDs.CasinoBanqueRoute)
