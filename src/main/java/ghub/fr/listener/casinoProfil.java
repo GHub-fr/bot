@@ -163,8 +163,8 @@ public class casinoProfil {
     }
 
     public static void clickDoPassif(User user) throws IOException {
-        UpdatePlayPassif(user, 10);
-        UpdatePlayPassif(user, (int) (GetPlayPassif(user) * 0.15));
+        UpdatePlayPassif(user, 100);
+        UpdatePlayPassif(user, (int) (GetPlayPassif(user) * 0.25));
     }
 
     public static void UpdatePlayPassif(User user, int montant) throws IOException {
