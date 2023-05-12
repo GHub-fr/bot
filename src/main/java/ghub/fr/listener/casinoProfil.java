@@ -102,6 +102,30 @@ public class casinoProfil {
         return embedBuilder;
     }
 
+    public static EmbedBuilder gainGold(User user, int montant, String text, int montant2, int montant3, String text2,
+            ServerTextChannel serverTextChannel)
+            throws IOException {
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setTitle("\uD83C\uDFB0 Casino \uD83C\uDFB2 \uD83C\uDFB3");
+        embedBuilder.setDescription(serverTextChannel.getMentionTag() + " " + user.getMentionTag());
+        embedBuilder.setThumbnail(user.getAvatar());
+        if (montant >= 1) {
+            embedBuilder.addInlineField("Gains : " + text, montant + " + " + montant3 + " \uD83D\uDCB0");
+        } else {
+            embedBuilder.addInlineField("Pertes : " + text, montant + " \uD83D\uDCB0");
+        }
+
+        embedBuilder.addInlineField(text + " : ", montant + " \uD83D\uDCB0");
+
+        File file = FileSystem.file(user);
+        FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+        int Gold = fileConfiguration.getInt("Gold");
+        embedBuilder.addInlineField("Total", (montant + Gold) + " \uD83D\uDCB0");
+        fileConfiguration.set("Gold", Gold + montant);
+        fileConfiguration.save(file);
+        return embedBuilder;
+    }
+
     public static boolean CanPlay(User user, int min, String gameName) throws IOException {
         File file = FileSystem.file(user);
         FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
