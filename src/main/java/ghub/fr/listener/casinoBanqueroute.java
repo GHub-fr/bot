@@ -90,15 +90,7 @@ public class casinoBanqueroute {
     public static int getTotal() throws IOException {
         File file = FileSystem.BanqueRoute();
         FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
-        int total = fileConfiguration.getInt("total");
-
-        if (total == 0) {
-            int defaultValue = 50000;
-            setTotal(defaultValue);
-            total += defaultValue;
-        }
-
-        return total;
+        return fileConfiguration.getInt("total");
     }
 
     public static void setTotal(int montant) throws IOException {
