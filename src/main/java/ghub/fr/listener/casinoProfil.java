@@ -115,14 +115,15 @@ public class casinoProfil {
             embedBuilder.addInlineField("Pertes : " + text, montant + " \uD83D\uDCB0");
         }
 
-        embedBuilder.addInlineField(text2 + " : ", montant2 + " + " + montant3 + " \uD83D\uDCB0");
-
         File file = FileSystem.file(user);
         FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
         int Gold = fileConfiguration.getInt("Gold");
         embedBuilder.addInlineField("Total", (montant + Gold) + " \uD83D\uDCB0");
         fileConfiguration.set("Gold", Gold + montant);
         fileConfiguration.save(file);
+
+        embedBuilder.addInlineField(text2 + " : ", montant2 + " + " + montant3 + " \uD83D\uDCB0");
+
         return embedBuilder;
     }
 
