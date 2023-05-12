@@ -45,10 +45,12 @@ public class casinoBanqueroute {
         if (gold >= cost) {
             double rng = Math.random();
             if (rng < 0.001) {
-                casinoProfil.gainGold(user, total, "🎉 Félicitations !", serverTextChannel);
+                main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
+                        .sendMessage(casinoProfil.gainGold(user, total, "🎉 Félicitations !", serverTextChannel));
                 setTotal(-total);
             } else {
-                casinoProfil.gainGold(user, -cost, "Perdu", serverTextChannel);
+                main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
+                        .sendMessage(casinoProfil.gainGold(user, -cost, "Perdu", serverTextChannel));
                 setTotal(cost);
             }
             updateMessage();
