@@ -56,7 +56,8 @@ public class messageLogger {
         });
 
         main.api.addMessageEditListener(event -> {
-            if (event.getMessageAuthor().get().asUser().get().isBot()) {
+            if (event.getMessageAuthor().isPresent() && event.getMessageAuthor().get().asUser().isPresent()
+                    && event.getMessageAuthor().get().asUser().get().isBot()) {
                 return;
             } else {
                 main.api.getServerTextChannelById(IDs.LogsMessage).get()
