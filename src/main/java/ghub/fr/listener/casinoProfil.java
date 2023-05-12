@@ -110,12 +110,12 @@ public class casinoProfil {
         embedBuilder.setDescription(serverTextChannel.getMentionTag() + " " + user.getMentionTag());
         embedBuilder.setThumbnail(user.getAvatar());
         if (montant >= 1) {
-            embedBuilder.addInlineField("Gains : " + text, montant + " + " + montant3 + " \uD83D\uDCB0");
+            embedBuilder.addInlineField("Gains : " + text, montant + " \uD83D\uDCB0");
         } else {
             embedBuilder.addInlineField("Pertes : " + text, montant + " \uD83D\uDCB0");
         }
 
-        embedBuilder.addInlineField(text + " : ", montant + " \uD83D\uDCB0");
+        embedBuilder.addInlineField(text2 + " : ", montant2 + " + " + montant3 + " \uD83D\uDCB0");
 
         File file = FileSystem.file(user);
         FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
