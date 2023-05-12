@@ -28,10 +28,12 @@ public class casinoDailyClicker {
                             casinoProfil.clickDoPassif(event.getUser().get());
                             casinoProfil.UpdatePlayDate(event.getUser().get(), "DayliClaim");
                             int passifGains = casinoProfil.GetPlayPassif(event.getUser().get()) - passifs;
+                            int DayliClaim = casinoProfil.GetPlayCount(event.getUser().get());
                             main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get().sendMessage(
                                     casinoProfil.gainGold(event.getUser().get(),
                                             250, "Clique journalier",
                                             passifs, passifGains, "Passifs",
+                                            DayliClaim, "Clique 🕙",
                                             event.getChannel().asServerTextChannel().get()));
                         } else {
                             event.getUser().get().sendMessage("Vous avez **__déjà joué dans les dernières 24H__** au "

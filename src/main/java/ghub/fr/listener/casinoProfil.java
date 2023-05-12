@@ -102,7 +102,10 @@ public class casinoProfil {
         return embedBuilder;
     }
 
-    public static EmbedBuilder gainGold(User user, int montant, String text, int montant2, int montant3, String text2,
+    public static EmbedBuilder gainGold(User user,
+            int montant, String text, int montant2,
+            int montant3, String text2,
+            int montant4, String text3,
             ServerTextChannel serverTextChannel)
             throws IOException {
         EmbedBuilder embedBuilder = new EmbedBuilder();
@@ -123,6 +126,7 @@ public class casinoProfil {
         fileConfiguration.save(file);
 
         embedBuilder.addInlineField(text2 + " : ", montant2 + " + " + montant3 + " \uD83D\uDCB0");
+        embedBuilder.addInlineField(text3 + " : ", montant4 + "");
 
         return embedBuilder;
     }
@@ -174,6 +178,12 @@ public class casinoProfil {
         File file = FileSystem.file(user);
         FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
         return fileConfiguration.getInt("GainsPassifs");
+    }
+
+    public static int GetPlayCount(User user) throws IOException {
+        File file = FileSystem.file(user);
+        FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+        return fileConfiguration.getInt("DayliClaimCount");
     }
 
     public static int GetGold(User user) throws IOException {
