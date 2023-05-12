@@ -35,4 +35,12 @@ public class FileSystem {
         }
         return file;
     }
+
+    public static File BanqueRoute() throws IOException {
+        File file = new File(getFolder(), "BanqueRoute");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        return file;
+    }
 }

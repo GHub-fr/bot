@@ -25,6 +25,7 @@ public class events {
         casinoCoinFlip.startCoinFlip();
         casinoDailyClicker.onCasinoDailyClicker();
         messageLogger.onMessageLogger();
+        casinoBanqueroute.startBanqueroute();
         //
         commands();
     }

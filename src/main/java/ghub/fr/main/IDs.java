@@ -93,6 +93,8 @@ public class IDs {
     public static final String CasinoBoutique = "1081940864420548668";
     public static final String CasinoDailyClick = "1082775165366177912";
     public static final String CasinoCoinFlip = "1092029640845041694";
+    public static final String CasinoBanqueRoute = "1106616355731542151";
+    
     public static int prixCoinFlip = 1000;
     //
     public static final String EmojiChargement = "<:chargement:1083509029332078622>";
@@ -156,6 +158,7 @@ public class IDs {
     public static final String EmojiMoneyWithWings = "💸";
     public static final String EmojiMouseThreeButton = "🖱️";
     public static final String EmojiCoin = "🪙";
+    public static final String EmojiBanque = "🏦";
     public static final String EmojiRocket = "🚀";
 
     public static ArrayList<String> VoiceChannelsCreator() {
