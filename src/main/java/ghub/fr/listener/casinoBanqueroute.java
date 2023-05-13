@@ -87,10 +87,10 @@ public class casinoBanqueroute {
                 + main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get().getMentionTag();
 
         embedBuilder.setDescription(message);
-        
+
         main.api.getServerById(IDs.serverID).get().getChannelById(IDs.CasinoBanqueRoute).get()
                 .asServerTextChannel().get().getMessages(1).get().getOldestMessage().get()
-                .edit(embedBuilder);
+                .edit("", embedBuilder);
     }
 
     public static int getTotal() throws IOException {
