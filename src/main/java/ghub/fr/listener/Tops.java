@@ -130,17 +130,17 @@ public class Tops {
 
         switch (i) {
             case 0:
-                return ":first_place:" + user.getMentionTag() + "       +" + goldReward
-                        + ":moneybag:       Score: __**" + valueScore + "**__";
+                return ":first_place:" + user.getMentionTag() + "   +" + goldReward
+                        + ":moneybag:   Score: __**" + valueScore + "**__";
             case 1:
-                return ":second_place:" + user.getMentionTag() + "       +" + goldReward
-                        + ":moneybag:       Score: **" + valueScore + "**";
+                return ":second_place:" + user.getMentionTag() + "   +" + goldReward
+                        + ":moneybag:   Score: **" + valueScore + "**";
             case 2:
-                return ":third_place:" + user.getMentionTag() + "       +" + goldReward + ":moneybag:       Score: "
+                return ":third_place:" + user.getMentionTag() + "   +" + goldReward + ":moneybag:   Score: "
                         + valueScore + " !";
             case 3:
             case 4:
-                return user.getMentionTag() + "       +" + goldReward + ":moneybag:       Score: " + valueScore;
+                return user.getMentionTag() + "   +" + goldReward + ":moneybag:   Score: " + valueScore;
         }
         return "";
     }
