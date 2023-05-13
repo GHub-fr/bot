@@ -2,6 +2,7 @@ package ghub.fr.listener;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 
 import ghub.fr.api.FileSystem;
@@ -115,8 +116,11 @@ public class Tops {
             }
             if (IsInvite) {
                 try {
+                    EmbedBuilder embedBuilder = new EmbedBuilder();
+                    embedBuilder.setDescription(msg);
+                    
                     main.api.getServerById(IDs.serverID).get().getChannelById(IDs.Tops).get().asServerTextChannel()
-                            .get().getMessages(1).get().getOldestMessage().get().edit((msg));
+                            .get().getMessages(1).get().getOldestMessage().get().edit(embedBuilder);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
