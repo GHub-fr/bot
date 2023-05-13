@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.javacord.api.entity.channel.ServerTextChannel;
+import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.user.User;
 
 import ghub.fr.api.FileSystem;
@@ -69,6 +70,7 @@ public class casinoBanqueroute {
         int cost = getCost();
 
         long time = Instant.now().getEpochSecond();
+        EmbedBuilder embedBuilder = new EmbedBuilder();
 
         String message = "<t:" + time + ":R>\n"
                 + "\n**__Faites faire faillite à la banque !__**\n"
@@ -84,9 +86,11 @@ public class casinoBanqueroute {
                 + "Pour jouer cliquer sur " + IDs.EmojiBanque + ", le message sera envoyé dans "
                 + main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get().getMentionTag();
 
+        embedBuilder.setDescription(message);
+        
         main.api.getServerById(IDs.serverID).get().getChannelById(IDs.CasinoBanqueRoute).get()
                 .asServerTextChannel().get().getMessages(1).get().getOldestMessage().get()
-                .edit(message);
+                .edit(embedBuilder);
     }
 
     public static int getTotal() throws IOException {
