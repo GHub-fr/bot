@@ -156,7 +156,6 @@ public class commands {
 
         public static UserContextMenuBuilder profilUserContext() {
                 return new UserContextMenuBuilder().setName("profil")
-                                .setDescription("Affiche le profil discord d'un membre")
                                 .setDefaultEnabledForEveryone();
         }
 
