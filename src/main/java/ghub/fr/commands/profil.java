@@ -30,6 +30,7 @@ public class profil {
             UserContextMenuInteraction userContextMenuInteraction = event.getUserContextMenuInteraction();
             if (userContextMenuInteraction.getCommandName().equalsIgnoreCase("profil")) {
                 try {
+                    //Check if sending user can write in target channel
                     InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = userContextMenuInteraction.createImmediateResponder();
                     interactionImmediateResponseBuilder.addEmbed(casinoProfil.profil(userContextMenuInteraction.getTarget()));
                     interactionImmediateResponseBuilder.respond();
