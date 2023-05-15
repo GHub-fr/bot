@@ -1,7 +1,5 @@
 package ghub.fr.commands;
 
-import org.javacord.api.entity.message.MessageDecoration;
-import org.javacord.api.entity.message.MessageFlag;
 import org.javacord.api.interaction.SlashCommandInteraction;
 import org.javacord.api.interaction.UserContextMenuInteraction;
 import org.javacord.api.interaction.callback.InteractionImmediateResponseBuilder;
@@ -32,17 +30,8 @@ public class profil {
             UserContextMenuInteraction userContextMenuInteraction = event.getUserContextMenuInteraction();
             if (userContextMenuInteraction.getCommandName().equalsIgnoreCase("profil")) {
                 try {
-                    InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = userContextMenuInteraction
-                            .createImmediateResponder();
-                    if (userContextMenuInteraction.getChannel().get().canWrite(userContextMenuInteraction.getUser())) {
-                        interactionImmediateResponseBuilder
-                                .addEmbed(casinoProfil.profil(userContextMenuInteraction.getTarget()));
-                    } else {
-                        interactionImmediateResponseBuilder.setFlags(MessageFlag.EPHEMERAL);
-                        interactionImmediateResponseBuilder.setFlags(MessageFlag.URGENT);
-                        interactionImmediateResponseBuilder.append("Vous ne pouvez pas envoyer de message ici...",
-                                MessageDecoration.BOLD);
-                    }
+                    InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = userContextMenuInteraction.createImmediateResponder();
+                    interactionImmediateResponseBuilder.addEmbed(casinoProfil.profil(userContextMenuInteraction.getTarget()));
                     interactionImmediateResponseBuilder.respond();
                 } catch (Exception e) {
                     e.printStackTrace();
