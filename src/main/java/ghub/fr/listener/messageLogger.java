@@ -16,7 +16,8 @@ public class messageLogger {
 
     public static void onMessageLogger() {
         main.api.addMessageCreateListener(event -> {
-            if (event.getMessageAuthor().asUser().get().isBot()) {
+            if ( !event.getMessageAuthor().asUser().isPresent()
+                    || event.getMessageAuthor().asUser().get().isBot()) {
                 return;
             } else {
                 main.api.getServerTextChannelById(IDs.LogsMessage).get()
