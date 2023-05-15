@@ -24,8 +24,6 @@ public class commands {
                 builders.addAll(arraysMessageContextMenu());
                 main.api.bulkOverwriteGlobalApplicationCommands(builders).join();
 
-                // main.api.bulkOverwriteGlobalApplicationCommands(arrays()).get();
-
                 EmptyChannel.onEmptyChannel();
                 testping.onTestPing();
                 profil.onProfil();
@@ -42,9 +40,6 @@ public class commands {
                 ip.onIP();
         }
 
-        /*
-         * For command update/creation
-         */
         public static List<SlashCommandBuilder> arrays() {
                 ArrayList<SlashCommandBuilder> arrays = new ArrayList<SlashCommandBuilder>();
                 arrays.add(EmptyChannel());
@@ -64,22 +59,20 @@ public class commands {
                 return arrays.stream().toList();
         }
 
-        /*
-         * For command update/creation (User Context menu)
-         */
         public static List<UserContextMenuBuilder> arraysUserContextMenu() {
                 ArrayList<UserContextMenuBuilder> arrays = new ArrayList<UserContextMenuBuilder>();
                 arrays.add(profilUserContext());
                 return arrays.stream().toList();
         }
 
-        /*
-         * For command update/creation (Message Context menu)
-         */
         public static List<MessageContextMenuBuilder> arraysMessageContextMenu() {
                 ArrayList<MessageContextMenuBuilder> arrays = new ArrayList<MessageContextMenuBuilder>();
                 return arrays.stream().toList();
         }
+
+        /*
+         * 
+         */
 
         public static SlashCommandBuilder EmptyChannel() {
                 return new SlashCommandBuilder().setName("emptychannel")
