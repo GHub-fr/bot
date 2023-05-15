@@ -1,9 +1,12 @@
 package ghub.fr.commands;
 
 import org.javacord.api.entity.permission.PermissionType;
+import org.javacord.api.interaction.ApplicationCommandBuilder;
+import org.javacord.api.interaction.MessageContextMenuBuilder;
 import org.javacord.api.interaction.SlashCommandBuilder;
 import org.javacord.api.interaction.SlashCommandOption;
 import org.javacord.api.interaction.SlashCommandOptionType;
+import org.javacord.api.interaction.UserContextMenuBuilder;
 
 import ghub.fr.listener.casinoCoinFlip;
 import ghub.fr.listener.createButton;
@@ -15,7 +18,13 @@ import java.util.concurrent.ExecutionException;
 
 public class commands {
         public static void onCommands() throws ExecutionException, InterruptedException {
-                main.api.bulkOverwriteGlobalApplicationCommands(arrays()).get();
+                List<ApplicationCommandBuilder<?, ?, ?>> builders = new ArrayList<>();
+                builders.addAll(arrays());
+                builders.addAll(arraysUserContextMenu());
+                builders.addAll(arraysMessageContextMenu());
+                main.api.bulkOverwriteGlobalApplicationCommands(builders).join();
+
+                // main.api.bulkOverwriteGlobalApplicationCommands(arrays()).get();
 
                 EmptyChannel.onEmptyChannel();
                 testping.onTestPing();
@@ -51,6 +60,23 @@ public class commands {
                 arrays.add(CoinFlip());
                 arrays.add(CreateButton());
                 arrays.add(IP());
+                return arrays.stream().toList();
+        }
+
+        /*
+         * For command update/creation (User Context menu)
+         */
+        public static List<UserContextMenuBuilder> arraysUserContextMenu() {
+                ArrayList<UserContextMenuBuilder> arrays = new ArrayList<UserContextMenuBuilder>();
+                arrays.add(profilUserContext());
+                return arrays.stream().toList();
+        }
+
+        /*
+         * For command update/creation (Message Context menu)
+         */
+        public static List<MessageContextMenuBuilder> arraysMessageContextMenu() {
+                ArrayList<MessageContextMenuBuilder> arrays = new ArrayList<MessageContextMenuBuilder>();
                 return arrays.stream().toList();
         }
 
@@ -126,6 +152,12 @@ public class commands {
                                 .addOption(option(SlashCommandOptionType.USER, "Utilisateur",
                                                 "Un utilisateur du serveur à vérifier",
                                                 false));
+        }
+
+        public static UserContextMenuBuilder profilUserContext() {
+                return new UserContextMenuBuilder().setName("profil")
+                                .setDescription("Affiche le profil discord d'un membre")
+                                .setDefaultEnabledForEveryone();
         }
 
         public static SlashCommandBuilder CoinFlip() {
