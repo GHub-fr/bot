@@ -29,6 +29,7 @@ public class commands {
                 EmptyChannel.onEmptyChannel();
                 testping.onTestPing();
                 profil.onProfil();
+                profil.onProfilUserContextMenu();
                 mute.setMute();
                 kick.onKickUser();
                 ban.banUser();
