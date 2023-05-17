@@ -85,16 +85,17 @@ public class IDs {
     public static final String Annonces = "1081940940945629194";
     public static final String Regles = "1082078579426345011";
     public static final String Invitation = "1081941748240089158";
+    public static final String Sanctions = "1108535295227465798";
     public static final String Statistiques = "1081940710799978546";
     public static final String Tops = "1081940819235319808";
     public static final String AFKVoice = "1081943448514482246";
-    public static final String CasinoTextuelResultat = "1081943163985469511";//commandes
+    public static final String CasinoTextuelResultat = "1081943163985469511";// commandes
     //
     public static final String CasinoBoutique = "1081940864420548668";
     public static final String CasinoDailyClick = "1082775165366177912";
     public static final String CasinoCoinFlip = "1092029640845041694";
     public static final String CasinoBanqueRoute = "1106616355731542151";
-    
+
     public static int prixCoinFlip = 1000;
     //
     public static final String EmojiChargement = "<:chargement:1083509029332078622>";

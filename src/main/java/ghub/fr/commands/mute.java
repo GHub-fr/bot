@@ -24,21 +24,23 @@ public class mute {
                     date.setMinutes(date.getMinutes() + muteMin);
 
                     String raison = slashCommandInteraction.getOptionStringValueByIndex(2).get();
-                    String Message = user.getMentionTag() + "Vous avez été **rendu muet pour __" + muteMin
-                            + " minute(s) (" + date + "__**\nRaison : **__"
-                            + raison + "__**\nPar : " + sender.getMentionTag() + " ( " + sender.getDiscriminatedName()
-                            + " )";
 
                     EmbedBuilder embedBuilder = new EmbedBuilder();
                     embedBuilder.setThumbnail(user.getAvatar());
-                    embedBuilder.setTitle("🔇 Mute");
+                    embedBuilder.setTitle("🔇 Exclusion");
+                    embedBuilder.addInlineField("Utilisateur", user.getMentionTag());
+                    embedBuilder.addInlineField("ID", user.getIdAsString());
                     embedBuilder.addInlineField("Rendu muet jusqu'au", "" + date);
                     embedBuilder.addInlineField("Par", sender.getMentionTag());
-                    embedBuilder.addInlineField("Raison", Message);
-
-                    user.sendMessage(Message).get();
+                    embedBuilder.addInlineField("Raison", raison);
 
                     main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder);
+
+                    // Vérifier si le demandeur du ban à un rôle supérieur au bani (pas égal,
+                    // obligatoir >)
+
+                    user.sendMessage(embedBuilder).get();
+                    main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder).get();
 
                     user.timeout(event.getInteraction().getServer().get(), date.toInstant(), raison);
 
