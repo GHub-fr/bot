@@ -41,7 +41,7 @@ public class casinoBanqueroute {
             throws IOException, InterruptedException, ExecutionException {
         int gold = casinoProfil.GetGold(user);
         int total = getTotal();// add 1k / day on it
-        int cost = (int) (total * 0.01);
+        int cost = getCost();
 
         if (gold >= cost) {
             double rng = Math.random();
@@ -61,8 +61,9 @@ public class casinoBanqueroute {
     }
 
     public static int getCost() throws IOException {
-        int total = getTotal();
-        return (int) (total * 0.01);
+        // int total = getTotal();
+        // return (int) (total * 0.01);
+        return 1000;
     }
 
     public static void updateMessage() throws IOException, InterruptedException, ExecutionException {
@@ -87,7 +88,7 @@ public class casinoBanqueroute {
                 + main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get().getMentionTag();
 
         embedBuilder.setDescription(message);
-        
+
         main.api.getServerById(IDs.serverID).get().getChannelById(IDs.CasinoBanqueRoute).get()
                 .asServerTextChannel().get().getMessages(1).get().getOldestMessage().get()
                 .edit(embedBuilder);
