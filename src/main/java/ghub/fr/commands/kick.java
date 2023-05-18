@@ -5,6 +5,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteraction;
 import org.javacord.api.interaction.callback.InteractionImmediateResponseBuilder;
 
+import ghub.fr.api.HigherRole;
 import ghub.fr.main.IDs;
 import ghub.fr.main.main;
 
@@ -28,13 +29,11 @@ public class kick {
 
                     main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder).get();
 
-                    // Vérifier si le demandeur du ban à un rôle supérieur au bani (pas égal,
-                    // obligatoir >)
-
-                    user.sendMessage(embedBuilder).get();
-                    main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder).get();
-
-                    slashCommandInteraction.getServer().get().kickUser(user, raison);
+                    if (HigherRole.isRoleHigher(sender, user)) {
+                        user.sendMessage(embedBuilder).get();
+                        main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder).get();
+                        slashCommandInteraction.getServer().get().kickUser(user, raison);
+                    }
 
                     InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = slashCommandInteraction
                             .createImmediateResponder();

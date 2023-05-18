@@ -5,6 +5,7 @@ import org.javacord.api.entity.user.User;
 import org.javacord.api.interaction.SlashCommandInteraction;
 import org.javacord.api.interaction.callback.InteractionImmediateResponseBuilder;
 
+import ghub.fr.api.HigherRole;
 import ghub.fr.main.IDs;
 import ghub.fr.main.main;
 
@@ -32,7 +33,7 @@ public class ban {
                     }
 
                     String raison = slashCommandInteraction.getOptionStringValueByIndex(2).get();
-                    
+
                     EmbedBuilder embedBuilder = new EmbedBuilder();
                     embedBuilder.setThumbnail(user.getAvatar());
                     embedBuilder.setTitle("🔨 Ban");
@@ -43,14 +44,12 @@ public class ban {
 
                     main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder).get();
 
-                    // Vérifier si le demandeur du ban à un rôle supérieur au bani (pas égal,
-                    // obligatoir >)
+                    if (HigherRole.isRoleHigher(sender, user)) {
+                        user.sendMessage(embedBuilder).get();
+                        main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder).get();
+                        slashCommandInteraction.getServer().get().banUser(user, days, raison);
+                    }
 
-                    user.sendMessage(embedBuilder).get();
-                    main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder).get();
-
-                    slashCommandInteraction.getServer().get().banUser(user, days, raison);
-                    
                     InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = slashCommandInteraction
                             .createImmediateResponder();
                     interactionImmediateResponseBuilder.setContent("\uD83D\uDC8E");
