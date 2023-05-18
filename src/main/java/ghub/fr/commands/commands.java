@@ -169,7 +169,7 @@ public class commands {
                                 .addOption(option(SlashCommandOptionType.DECIMAL, "Minutes",
                                                 "Le temps en minutes pour le mute (1 à 43200 minutes [30j])", true))
                                 .addOption(option(SlashCommandOptionType.STRING, "Raison", "Raison du mute", true))
-                                .setDefaultEnabledForPermissions(PermissionType.MUTE_MEMBERS);
+                                .setDefaultEnabledForPermissions(PermissionType.MODERATE_MEMBERS);
         }
 
         public static SlashCommandBuilder Ban() {
