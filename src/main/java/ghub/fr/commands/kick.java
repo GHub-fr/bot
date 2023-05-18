@@ -27,11 +27,11 @@ public class kick {
                     embedBuilder.addInlineField("Par", sender.getMentionTag());
                     embedBuilder.addInlineField("Raison", raison);
 
-                    main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder).get();
+                    main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder);
 
                     if (HigherRole.isRoleHigher(sender, user)) {
                         user.sendMessage(embedBuilder);
-                        main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder).get();
+                        main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
                         slashCommandInteraction.getServer().get().kickUser(user, raison);
                     }
 
