@@ -77,7 +77,7 @@ public class casinoBanqueroute {
                 + "\n**__Faites faire faillite à la banque !__**\n"
                 + "\n"
                 + "Vous avez **__0.1% de chance de gagner__**\n"
-                + "Chaque tentative **__coûte 1% de la somme à gagner__**\n"
+                + "Chaque tentative **__coûte 1'000 " + IDs.EmojiCoin + "__**\n"
                 + "Les **__pertes seront ajoutés à la cagnotte__**\n"
                 + "Toutes les heures 1'000 golds est ajouté à la cagnotte\n"
                 + "\n"
