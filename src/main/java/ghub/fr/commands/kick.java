@@ -30,7 +30,7 @@ public class kick {
                     main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder).get();
 
                     if (HigherRole.isRoleHigher(sender, user)) {
-                        user.sendMessage(embedBuilder).get();
+                        user.sendMessage(embedBuilder);
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder).get();
                         slashCommandInteraction.getServer().get().kickUser(user, raison);
                     }
