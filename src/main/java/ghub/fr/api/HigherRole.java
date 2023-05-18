@@ -21,8 +21,8 @@ public class HigherRole {
 
         if (role.getPosition() > role2.getPosition()) {
             return true;
+        } else {
+            return false;
         }
-
-        return false;
     }
 }
