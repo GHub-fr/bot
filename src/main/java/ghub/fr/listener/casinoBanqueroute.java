@@ -81,7 +81,7 @@ public class casinoBanqueroute {
                 + "Toutes les heures 1'000 golds est ajouté à la cagnotte\n"
                 + "\n"
                 + "Total à gagner : " + total + ":coin:\n"
-                + "Coût de la tentative : **__" + cost + "__**" + IDs.EmojiCoin + "\n"
+                + "Coût de la tentative : **__" + cost + "__** " + IDs.EmojiCoin + "\n"
                 + "\n"
                 + "Pour jouer cliquer sur " + IDs.EmojiBanque + ", le message sera envoyé dans "
                 + main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get().getMentionTag();
