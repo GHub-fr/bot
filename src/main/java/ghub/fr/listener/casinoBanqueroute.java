@@ -80,7 +80,7 @@ public class casinoBanqueroute {
                 + "Les **__pertes seront ajoutés à la cagnotte__**\n"
                 + "Toutes les heures 1'000 golds est ajouté à la cagnotte\n"
                 + "\n"
-                + "Total à gagner : " + total + ":coin:\n"
+                + "Total à gagner : " + total + " :coin:\n"
                 + "Coût de la tentative : **__" + cost + "__** " + IDs.EmojiCoin + "\n"
                 + "\n"
                 + "Pour jouer cliquer sur " + IDs.EmojiBanque + ", le message sera envoyé dans "
