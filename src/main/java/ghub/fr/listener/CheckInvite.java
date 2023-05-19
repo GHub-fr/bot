@@ -186,7 +186,7 @@ public class CheckInvite {
                     } else if (dateUserJoinDiscord.after(dateNow2)) {
                         EmbedBuilder embedBuilder = new EmbedBuilder();
                         embedBuilder.setThumbnail(user.getAvatar());
-                        embedBuilder.setTitle("🚨 Compte récent");
+                        embedBuilder.setTitle("🚼 Compte récent");
                         embedBuilder.addInlineField("Utilisateur", user.getMentionTag());
                         embedBuilder.addInlineField("ID", user.getIdAsString());
                         embedBuilder.addInlineField("Raison", "Compte crée il y a moins de " + monthToCheck2 + " mois");
