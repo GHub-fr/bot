@@ -9,8 +9,6 @@ import ghub.fr.api.HigherRole;
 import ghub.fr.main.IDs;
 import ghub.fr.main.main;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class mute {
@@ -25,7 +23,6 @@ public class mute {
                     int muteMin = (int) Math.round(slashCommandInteraction.getOptionDecimalValueByIndex(1).get());
                     Date date = new Date();
                     date.setMinutes(date.getMinutes() + muteMin);
-                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
                     String raison = slashCommandInteraction.getOptionStringValueByIndex(2).get();
 
@@ -34,7 +31,7 @@ public class mute {
                     embedBuilder.setTitle("🔇 Exclusion");
                     embedBuilder.addInlineField("Utilisateur", user.getMentionTag());
                     embedBuilder.addInlineField("ID", user.getIdAsString());
-                    embedBuilder.addInlineField("Rendu muet jusqu'au", "" + dateFormat.format(date));
+                    embedBuilder.addInlineField("Rendu muet jusqu'au", "" + "<t:"+ date.toInstant().getEpochSecond() + ":R>");
                     embedBuilder.addInlineField("Par", sender.getMentionTag());
                     embedBuilder.addInlineField("Raison", raison);
 

@@ -64,13 +64,19 @@ public class CheckInvite {
                     FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
                     FileConfiguration fileConfigurationGlobal = YamlConfiguration.loadConfiguration(fileGlobal);
 
-                    fileConfiguration.set("Invites." + richInvite1.getCode(), richInvite1.getUses());
+                    /*
+                     * fileConfiguration.set("Invites." + richInvite1.getCode(),
+                     * richInvite1.getUses());
+                     * fileConfiguration.save(file);
+                     * fileConfiguration = YamlConfiguration.loadConfiguration(file);
+                     */
 
                     List<String> listGlobal = fileConfigurationGlobal.getStringList("globalInvites");
                     if (!listGlobal.contains(user.getIdAsString())) {
                         listGlobal.add(user.getIdAsString());
                         fileConfigurationGlobal.set("globalInvites", listGlobal);
                         fileConfigurationGlobal.save(fileGlobal);
+
                         int gold = fileConfiguration.getInt("Gold") + 250;
                         fileConfiguration.set("Gold", gold);
                         fileConfiguration.set("InvitesCounted." + richInvite1.getCode(),
@@ -81,7 +87,7 @@ public class CheckInvite {
                             fileConfiguration.set("ListeInvites", list);
                         }
                         fileConfiguration.save(file);
-                        file = FileSystem.file(inviter);
+
                         fileConfiguration = YamlConfiguration.loadConfiguration(file);
                         int linkCountedUses = fileConfiguration.getInt("InvitesCounted." + richInvite1.getCode());
                         int total = 0;
@@ -126,6 +132,47 @@ public class CheckInvite {
                         embedBuilder.addInlineField("Totaux", "" + total);
                         main.api.getChannelById(IDs.Invitation).get().asServerTextChannel().get()
                                 .sendMessage(embedBuilder);
+                    } else {
+                        int linkCountedUses = fileConfiguration.getInt("InvitesCounted." + richInvite1.getCode());
+                        int total = 0;
+                        for (String invites : fileConfiguration.getStringList("ListeInvites")) {
+                            total += fileConfiguration.getInt("InvitesCounted." + invites);
+                        }
+
+                        EmbedBuilder embedBuilder = new EmbedBuilder();
+                        embedBuilder.setThumbnail(user.getAvatar());
+                        embedBuilder.setTitle("\uD83C\uDD95 Retour");
+                        Timestamp timestamp2 = new Timestamp(user.getCreationTimestamp().toEpochMilli());
+                        Date date2 = new Date(timestamp2.getTime());
+                        embedBuilder.setDescription("Bon retour à toi " + user.getMentionTag() + "  "
+                                + user.getDiscriminatedName() + "\nSur Discord depuis le : **__"
+                                + StatsTimer.DateFormated(date2) + "__**\n\n");
+                        embedBuilder.addInlineField("Invité par", inviter.getMentionTag());
+                        embedBuilder.addInlineField("Lien", ".gg/" + richInvite1.getCode());
+                        embedBuilder.addInlineField("Cliques", "" + richInvite1.getUses());
+                        embedBuilder.addInlineField("Invitations", "" + linkCountedUses);
+                        embedBuilder.addInlineField("Totaux", "" + total);
+                        main.api.getChannelById(IDs.Invitation).get().asServerTextChannel().get()
+                                .sendMessage(embedBuilder);
+                    }
+
+                    Timestamp timestampUserJoinDiscord = new Timestamp(user.getCreationTimestamp().toEpochMilli());
+                    Date dateUserJoinDiscord = new Date(timestampUserJoinDiscord.getTime());
+                    Date dateNow = new Date();
+                    int monthToCheck = 3;
+                    dateNow.setMonth(dateNow.getMonth() - monthToCheck);
+
+                    if (dateUserJoinDiscord.after(dateNow)) {
+                        EmbedBuilder embedBuilder = new EmbedBuilder();
+                        embedBuilder.setThumbnail(user.getAvatar());
+                        embedBuilder.setTitle("🚨 Refus automatique");
+                        embedBuilder.addInlineField("Utilisateur", user.getMentionTag());
+                        embedBuilder.addInlineField("ID", user.getIdAsString());
+                        embedBuilder.addInlineField("Raison", "Compte crée il y a moins de " + monthToCheck + " mois");
+                        embedBuilder.addInlineField("Date du compte", "<t:" + timestampUserJoinDiscord.toInstant().getEpochSecond() + ":R>");
+
+                        user.sendMessage(embedBuilder);
+                        main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
                     }
                     return;
                 }
