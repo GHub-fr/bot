@@ -158,9 +158,14 @@ public class CheckInvite {
 
                     Timestamp timestampUserJoinDiscord = new Timestamp(user.getCreationTimestamp().toEpochMilli());
                     Date dateUserJoinDiscord = new Date(timestampUserJoinDiscord.getTime());
+
                     Date dateNow = new Date();
                     int monthToCheck = 3;
                     dateNow.setMonth(dateNow.getMonth() - monthToCheck);
+
+                    Date dateNow2 = new Date();
+                    int monthToCheck2 = 9;
+                    dateNow2.setMonth(dateNow2.getMonth() - monthToCheck2);
 
                     if (dateUserJoinDiscord.after(dateNow)) {
                         EmbedBuilder embedBuilder = new EmbedBuilder();
@@ -169,11 +174,26 @@ public class CheckInvite {
                         embedBuilder.addInlineField("Utilisateur", user.getMentionTag());
                         embedBuilder.addInlineField("ID", user.getIdAsString());
                         embedBuilder.addInlineField("Raison", "Compte crée il y a moins de " + monthToCheck + " mois");
-                        embedBuilder.addInlineField("Date du compte", "<t:" + timestampUserJoinDiscord.toInstant().getEpochSecond() + ":R>");
+                        embedBuilder.addInlineField("Date du compte",
+                                "<t:" + timestampUserJoinDiscord.toInstant().getEpochSecond() + ":R>");
 
-                        main.api.getServerById(IDs.serverID).get().kickUser(user, "Auto kick " + monthToCheck + " mois");
+                        main.api.getServerById(IDs.serverID).get().kickUser(user,
+                                "Auto kick " + monthToCheck + " mois");
+
                         user.sendMessage(embedBuilder);
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
+                        main.api.getServerTextChannelById(IDs.AutoMod).get().sendMessage(embedBuilder);
+                    } else if (dateUserJoinDiscord.after(dateNow2)) {
+                        EmbedBuilder embedBuilder = new EmbedBuilder();
+                        embedBuilder.setThumbnail(user.getAvatar());
+                        embedBuilder.setTitle("🚨 Compte récent");
+                        embedBuilder.addInlineField("Utilisateur", user.getMentionTag());
+                        embedBuilder.addInlineField("ID", user.getIdAsString());
+                        embedBuilder.addInlineField("Raison", "Compte crée il y a moins de " + monthToCheck2 + " mois");
+                        embedBuilder.addInlineField("Date du compte",
+                                "<t:" + timestampUserJoinDiscord.toInstant().getEpochSecond() + ":R>");
+
+                        main.api.getServerTextChannelById(IDs.AutoMod).get().sendMessage(embedBuilder);
                     }
                     return;
                 }

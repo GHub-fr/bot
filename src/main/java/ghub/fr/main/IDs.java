@@ -86,6 +86,8 @@ public class IDs {
     public static final String Regles = "1082078579426345011";
     public static final String Invitation = "1081941748240089158";
     public static final String Sanctions = "1108535295227465798";
+    public static final String AutoMod = "1081947188722155601";
+
     public static final String Statistiques = "1081940710799978546";
     public static final String Tops = "1081940819235319808";
     public static final String AFKVoice = "1081943448514482246";
