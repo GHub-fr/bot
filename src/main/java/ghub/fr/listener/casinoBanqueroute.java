@@ -78,7 +78,7 @@ public class casinoBanqueroute {
                 + "\n"
                 + "Vous avez **__0.1% de chance de gagner__**\n"
                 + "Les **__pertes seront ajoutés à la cagnotte__**\n"
-                + "**__Toutes les heures 1'000 golds sont ajoutés__** à la cagnotte\n"
+                + "**__Toutes les heures 10'000 golds sont ajoutés__** à la cagnotte\n"
                 + "\n"
                 + "Total à gagner : " + total + " :coin:\n"
                 + "Coût de la tentative : **__" + cost + "__** " + IDs.EmojiCoin + "\n"
