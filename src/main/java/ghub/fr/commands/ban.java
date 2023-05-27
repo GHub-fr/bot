@@ -22,12 +22,12 @@ public class ban {
                     if (days >= 1 && days <= 7) {
                         InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = slashCommandInteraction
                                 .createImmediateResponder();
-                        interactionImmediateResponseBuilder.setContent(IDs.EmojiGreenCrossMark);
+                        interactionImmediateResponseBuilder.setContent(IDs.EmojiShield);
                         interactionImmediateResponseBuilder.respond();
                     } else {
                         InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = slashCommandInteraction
                                 .createImmediateResponder();
-                        interactionImmediateResponseBuilder.setContent(IDs.EmojiSpeechBalloon + " Erreur sur la durée");
+                        interactionImmediateResponseBuilder.setContent(IDs.EmojiSpeechBalloon + " Erreur sur la durée (1 à 7 jours de suppression des messages)");
                         interactionImmediateResponseBuilder.respond();
                         return;
                     }
