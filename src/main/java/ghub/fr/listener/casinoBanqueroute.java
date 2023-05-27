@@ -110,7 +110,7 @@ public class casinoBanqueroute {
         TimerTask task = new TimerTask() {
             public void run() {
                 try {
-                    setTotal(1000);
+                    setTotal(10000);
                     updateMessage();
                 } catch (Exception e) {
                     e.printStackTrace();
