@@ -26,6 +26,7 @@ public class events {
         casinoDailyClicker.onCasinoDailyClicker();
         messageLogger.onMessageLogger();
         casinoBanqueroute.startBanqueroute();
+        VoiceCounter.startVoiceEvent();
         //
         commands();
     }

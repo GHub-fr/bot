@@ -31,13 +31,15 @@ public class Tops {
 
     public static String msgInvite = "\n\n**__Top invitations__** :envelope: :\n";
 
+    public static String msgVoice = "\n\n**__Top vocal__** :call_me: :\n";
+
     public static String msgFinalCategorie = "";
 
     public static void Start() {
         TimerTask task = new TimerTask() {
             public void run() {
                 try {
-                    Update(true, false, false);
+                    Update(true, false, false, false);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -47,7 +49,7 @@ public class Tops {
         timer.scheduleAtFixedRate(task, 1000 * 10, 1000 * 60 * 60 * 8);
     }
 
-    public static void Update(boolean IsGold, boolean IsMsg, boolean IsInvite)
+    public static void Update(boolean IsGold, boolean IsMsg, boolean IsInvite, boolean IsVoice)
             throws IOException, ExecutionException, InterruptedException {
         int top = 0;
         User userTop = main.api.getYourself();
@@ -67,6 +69,8 @@ public class Tops {
                         invite += fileConfiguration.getInt("InvitesCounted." + invites);
                     }
                     valueToCheck = invite;
+                } else if (IsVoice) {
+                    valueToCheck = fileConfiguration.getInt("voiceTime");
                 }
 
                 if (top < valueToCheck) {
@@ -78,7 +82,7 @@ public class Tops {
         users.add(userTop);
         usersTopVal.add(top);
         if (users.size() <= 4) {
-            Update(IsGold, IsMsg, IsInvite);
+            Update(IsGold, IsMsg, IsInvite, IsVoice);
         } else {
             if (IsGold) {
                 long time = Instant.now().getEpochSecond();
@@ -90,11 +94,12 @@ public class Tops {
                 msgFinalCategorie += msgMsg;
             } else if (IsInvite) {
                 msgFinalCategorie += msgInvite;
+            } else if (IsVoice) {
+                msgFinalCategorie += msgVoice;
             }
 
             int i = 0;
             for (User user : users) {
-
                 msgFinalCategorie += messageUser(user, i, IsInvite, usersTopVal.get(i)) + "\n";
                 File file = FileSystem.file(user);
                 FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
@@ -110,15 +115,18 @@ public class Tops {
             usersTopVal = new ArrayList<>();
 
             if (IsGold) {
-                Update(false, true, false);
+                Update(false, true, false, false);
             } else if (IsMsg) {
-                Update(false, false, true);
+                Update(false, false, true, false);
+            } else if (IsInvite) {
+                Update(false, false, false, true);
             }
-            if (IsInvite) {
+
+            if (IsVoice) {
                 try {
                     EmbedBuilder embedBuilder = new EmbedBuilder();
                     embedBuilder.setDescription(msg);
-                    
+
                     main.api.getServerById(IDs.serverID).get().getChannelById(IDs.Tops).get().asServerTextChannel()
                             .get().getMessages(1).get().getOldestMessage().get().edit(embedBuilder);
                 } catch (Exception e) {
