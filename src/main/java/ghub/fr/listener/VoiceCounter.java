@@ -42,14 +42,18 @@ public class VoiceCounter {
                                 .getIdAsString().equals(server.getAfkChannel().get().getIdAsString())) {
                             this.cancel();
                         } else {
-                            if (!user.isMuted(server) && !user.isSelfMuted(server) && !user.isDeafened(server)
-                                    && !user.isSelfDeafened(server)) {
-                                if (user.getConnectedVoiceChannel(server).get().getConnectedUsers().size() >= 2) {
-                                    File file = FileSystem.file(user);
-                                    FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
-                                    fileConfiguration.set("voiceTime", (fileConfiguration.getInt("voiceTime") + 1));
-                                    fileConfiguration.save(file);
-                                }
+                            if ((!user.isSelfMuted(server) && !user.isSelfDeafened(server))
+
+                                    ||
+
+                                    (user.getConnectedVoiceChannel(server).get().getConnectedUsers().size() >= 2
+                                            && !user.isMuted(server) && !user.isDeafened(server))) {
+
+                                File file = FileSystem.file(user);
+                                FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+                                fileConfiguration.set("voiceTime", (fileConfiguration.getInt("voiceTime") + 1));
+                                fileConfiguration.save(file);
+
                             }
                         }
                     } else {
