@@ -149,7 +149,7 @@ public class Tops {
         } else if (isInvite) {
             endMsg += " invitations";
         } else if (isVoice) {
-            endMsg += "(" + VoiceCounter.voiceSecFormat(valueScore) + ")";
+            endMsg += " (" + VoiceCounter.voiceSecFormat(valueScore) + ")";
         }
 
         switch (i) {
