@@ -49,7 +49,7 @@ public class Tops {
         timer.scheduleAtFixedRate(task, 1000 * 10, 1000 * 60 * 60 * 8);
     }
 
-    public static void Update(boolean IsGold, boolean IsMsg, boolean IsInvite, boolean IsVoice)
+    public static void Update(boolean isGold, boolean isMsg, boolean isInvite, boolean isVoice)
             throws IOException, ExecutionException, InterruptedException {
         int top = 0;
         User userTop = main.api.getYourself();
@@ -59,17 +59,17 @@ public class Tops {
                 FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
 
                 int valueToCheck = 0;
-                if (IsGold) {
+                if (isGold) {
                     valueToCheck = fileConfiguration.getInt("Gold");
-                } else if (IsMsg) {
+                } else if (isMsg) {
                     valueToCheck = fileConfiguration.getInt("Messages");
-                } else if (IsInvite) {
+                } else if (isInvite) {
                     int invite = 0;
                     for (String invites : fileConfiguration.getStringList("ListeInvites")) {
                         invite += fileConfiguration.getInt("InvitesCounted." + invites);
                     }
                     valueToCheck = invite;
-                } else if (IsVoice) {
+                } else if (isVoice) {
                     valueToCheck = fileConfiguration.getInt("voiceTime");
                 }
 
@@ -82,28 +82,28 @@ public class Tops {
         users.add(userTop);
         usersTopVal.add(top);
         if (users.size() <= 4) {
-            Update(IsGold, IsMsg, IsInvite, IsVoice);
+            Update(isGold, isMsg, isInvite, isVoice);
         } else {
-            if (IsGold) {
+            if (isGold) {
                 long time = Instant.now().getEpochSecond();
                 Date date = new Date();
                 date.setHours(date.getHours() + 8);
                 long time2 = date.toInstant().getEpochSecond();
                 msgFinalCategorie += "<t:" + time + ":R>" + ", prochain : " + "<t:" + time2 + ":R>" + msgGold;
-            } else if (IsMsg) {
+            } else if (isMsg) {
                 msgFinalCategorie += msgMsg;
-            } else if (IsInvite) {
+            } else if (isInvite) {
                 msgFinalCategorie += msgInvite;
-            } else if (IsVoice) {
+            } else if (isVoice) {
                 msgFinalCategorie += msgVoice;
             }
 
             int i = 0;
             for (User user : users) {
-                msgFinalCategorie += messageUser(user, i, IsInvite, usersTopVal.get(i)) + "\n";
+                msgFinalCategorie += messageUser(user, i, isGold, isMsg, isInvite, isVoice, usersTopVal.get(i)) + "\n";
                 File file = FileSystem.file(user);
                 FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
-                int gold = fileConfiguration.getInt("Gold") + goldRewardBoost(i, IsInvite);
+                int gold = fileConfiguration.getInt("Gold") + goldRewardBoost(i, isInvite);
                 fileConfiguration.set("Gold", gold);
                 fileConfiguration.save(file);
                 i++;
@@ -114,15 +114,15 @@ public class Tops {
             users = new ArrayList<>();
             usersTopVal = new ArrayList<>();
 
-            if (IsGold) {
+            if (isGold) {
                 Update(false, true, false, false);
-            } else if (IsMsg) {
+            } else if (isMsg) {
                 Update(false, false, true, false);
-            } else if (IsInvite) {
+            } else if (isInvite) {
                 Update(false, false, false, true);
             }
 
-            if (IsVoice) {
+            if (isVoice) {
                 try {
                     EmbedBuilder embedBuilder = new EmbedBuilder();
                     embedBuilder.setDescription(msg);
@@ -137,29 +137,43 @@ public class Tops {
         }
     }
 
-    public static String messageUser(User user, int i, boolean IsInvite, int valueScore) {
-        int goldReward = goldRewardBoost(i, IsInvite);
+    public static String messageUser(User user, int i, boolean isGold, boolean isMsg, boolean isInvite, boolean isVoice,
+            int valueScore) {
+        int goldReward = goldRewardBoost(i, isInvite, isVoice);
+
+        String endMsg = "";
+        if (isGold) {
+            endMsg += " ";
+        } else if (isMsg) {
+            endMsg += " messages";
+        } else if (isInvite) {
+            endMsg += " invitations";
+        } else if (isVoice) {
+            endMsg += "(" + VoiceCounter.voiceSecFormat(valueScore) + ")";
+        }
 
         switch (i) {
             case 0:
                 return ":first_place:" + user.getMentionTag() + "   +" + goldReward
-                        + ":moneybag:   Score: __**" + valueScore + "**__";
+                        + ":moneybag:   Score: __**" + valueScore + endMsg + "**__";
             case 1:
                 return ":second_place:" + user.getMentionTag() + "   +" + goldReward
-                        + ":moneybag:   Score: **" + valueScore + "**";
+                        + ":moneybag:   Score: **" + valueScore + endMsg + "**";
             case 2:
                 return ":third_place:" + user.getMentionTag() + "   +" + goldReward + ":moneybag:   Score: "
-                        + valueScore + " !";
+                        + valueScore + endMsg + " !";
             case 3:
             case 4:
-                return user.getMentionTag() + "   +" + goldReward + ":moneybag:   Score: " + valueScore;
+                return user.getMentionTag() + "   +" + goldReward + ":moneybag:   Score: " + valueScore + endMsg;
         }
         return "";
     }
 
-    public static int goldRewardBoost(int i, boolean IsInvite) {
+    public static int goldRewardBoost(int i, boolean IsInvite, boolean isVoice) {
         int goldReward = goldReward(i);
         if (IsInvite) {
+            goldReward = goldReward * 5;
+        } else if (isVoice) {
             goldReward = goldReward * 2;
         }
         return goldReward;

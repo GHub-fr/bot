@@ -49,6 +49,21 @@ public class VoiceCounter {
             }
         };
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(task, 0,  1000);
+        timer.scheduleAtFixedRate(task, 0, 1000);
+    }
+
+    public static String voiceSecFormat(int duration) {
+        if (duration < 60) {
+            return duration + " secondes";
+        } else if (duration >= 60 && duration < 3_600) {
+            return (duration / 60) + " minutes";
+        } else if (duration >= 3_600 && duration < 86_400) {
+            return (duration / 3_600) + " heures";
+        } else if (duration >= 86_400 && duration < 604_800) {
+            return (duration / 86_400) + " heures";
+        } else if (duration >= 604_800) {
+            return (duration / 604_800) + " jours";
+        }
+        return "erreur";
     }
 }

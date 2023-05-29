@@ -51,7 +51,7 @@ public class casinoProfil {
                 user.getRoles(server).get(user.getRoles(server).size() - 1).getMentionTag());
         embedBuilder.addInlineField("    \uD83D\uDCB0 Argent", "" + Gold);
         embedBuilder.addInlineField("    \uD83D\uDCAC Messages", "" + i);
-        embedBuilder.addInlineField("    📞 Vocal", "" + voc + " secondes");
+        embedBuilder.addInlineField("    📞 Vocal", "" + VoiceCounter.voiceSecFormat(voc));
         embedBuilder.addInlineField("    \uD83D\uDC8C Invitations", "" + totalInvites);
         embedBuilder.addInlineField("    ⏳ Gains passifs", "" + Passifs);
         embedBuilder.addInlineField("    \uD83D\uDD59 Clique journalier", "" + DayliClaim);
