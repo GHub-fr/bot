@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
 
 import ghub.fr.api.FileSystem;
@@ -35,11 +36,17 @@ public class VoiceCounter {
             @Override
             public void run() {
                 try {
-                    if (!user.getConnectedVoiceChannel(main.api.getServerById(IDs.serverID).get()).isEmpty()) {
-                        File file = FileSystem.file(user);
-                        FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
-                        fileConfiguration.set("voiceTime", (fileConfiguration.getInt("voiceTime") + 1));
-                        fileConfiguration.save(file);
+                    Server server = main.api.getServerById(IDs.serverID).get();
+                    if (!user.getConnectedVoiceChannel(server).isEmpty()) {
+                        if (server.getAfkChannel().isPresent() && user.getConnectedVoiceChannel(server).get()
+                                .getIdAsString().equals(server.getAfkChannel().get().getIdAsString())) {
+                            this.cancel();
+                        } else {
+                            File file = FileSystem.file(user);
+                            FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+                            fileConfiguration.set("voiceTime", (fileConfiguration.getInt("voiceTime") + 1));
+                            fileConfiguration.save(file);
+                        }
                     } else {
                         this.cancel();
                     }
