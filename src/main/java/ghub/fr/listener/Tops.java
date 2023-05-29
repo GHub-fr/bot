@@ -103,7 +103,7 @@ public class Tops {
                 msgFinalCategorie += messageUser(user, i, isGold, isMsg, isInvite, isVoice, usersTopVal.get(i)) + "\n";
                 File file = FileSystem.file(user);
                 FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
-                int gold = fileConfiguration.getInt("Gold") + goldRewardBoost(i, isInvite);
+                int gold = fileConfiguration.getInt("Gold") + goldRewardBoost(i, isInvite, isVoice);
                 fileConfiguration.set("Gold", gold);
                 fileConfiguration.save(file);
                 i++;
