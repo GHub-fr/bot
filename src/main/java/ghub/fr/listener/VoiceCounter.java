@@ -76,9 +76,9 @@ public class VoiceCounter {
         } else if (duration >= 3_600 && duration < 86_400) {
             return (duration / 3_600) + " heures";
         } else if (duration >= 86_400 && duration < 604_800) {
-            return (duration / 86_400) + " heures";
+            return (duration / 86_400) + " jours";
         } else if (duration >= 604_800) {
-            return (duration / 604_800) + " jours";
+            return (duration / 604_800) + " mois";
         }
         return "erreur";
     }
