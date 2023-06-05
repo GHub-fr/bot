@@ -45,6 +45,7 @@ public class IDs {
     public static final Role RoleValorant = main.api.getRoleById("1081964620207624242").get();
     public static final Role RoleRocketLeague = main.api.getRoleById("1081964463906893916").get();
     public static final Role RoleSuperCell = main.api.getRoleById("1081964487822803094").get();
+    public static final Role RoleRoblox = main.api.getRoleById("1115390280879837276").get();
     //
     public static final Role RolePC = main.api.getRoleById("1081965472720900147").get();
     public static final Role RoleTelephone = main.api.getRoleById("1081965501498007582").get();
@@ -182,6 +183,7 @@ public class IDs {
         list.add(RoleCSGO);
         list.add(RoleLeagueOfLegends);
         list.add(RoleValorant);
+        list.add(RoleRoblox);
         return list;
     }
 
