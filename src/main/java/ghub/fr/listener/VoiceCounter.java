@@ -37,23 +37,26 @@ public class VoiceCounter {
             public void run() {
                 try {
                     Server server = main.api.getServerById(IDs.serverID).get();
-                    if (!user.getConnectedVoiceChannel(server).isEmpty()) {
+                    if (user.getConnectedVoiceChannel(server).isPresent()
+                            && !user.getConnectedVoiceChannel(server).isEmpty()) {
+
                         if (server.getAfkChannel().isPresent() && user.getConnectedVoiceChannel(server).get()
                                 .getIdAsString().equals(server.getAfkChannel().get().getIdAsString())) {
+
                             this.cancel();
+
                         } else {
-                            if ((!user.isSelfMuted(server) && !user.isSelfDeafened(server))
 
-                                    ||
+                            if (!user.isSelfMuted(server) || !user.isSelfDeafened(server) || !user.isMuted(server) || !user.isDeafened(server)) {
 
-                                    (user.getConnectedVoiceChannel(server).get().getConnectedUsers().size() >= 2
-                                            && !user.isMuted(server) && !user.isDeafened(server))) {
+                                if (user.getConnectedVoiceChannel(server).get().getConnectedUsers().size() >= 2) {
 
-                                File file = FileSystem.file(user);
-                                FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
-                                fileConfiguration.set("voiceTime", (fileConfiguration.getInt("voiceTime") + 1));
-                                fileConfiguration.save(file);
+                                    File file = FileSystem.file(user);
+                                    FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+                                    fileConfiguration.set("voiceTime", (fileConfiguration.getInt("voiceTime") + 1));
+                                    fileConfiguration.save(file);
 
+                                }
                             }
                         }
                     } else {
