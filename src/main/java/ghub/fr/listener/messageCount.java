@@ -2,6 +2,7 @@ package ghub.fr.listener;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.javacord.api.entity.message.MessageSet;
 
 import ghub.fr.api.FileSystem;
 import ghub.fr.main.main;
@@ -15,14 +16,25 @@ public class messageCount {
                 if (event.getMessageAuthor().isRegularUser()) {
                     if (!event.getMessageAuthor().asUser().get().getActiveTimeout(event.getServer().get())
                             .isPresent()) {
-                        File file = FileSystem.file(event.getMessageAuthor().asUser().get());
-                        FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
-                        int i = fileConfiguration.getInt("Messages") + 1;
-                        int gold = fileConfiguration.getInt("Gold") + 5;
-                        fileConfiguration.set("Gold", gold);
-                        fileConfiguration.set("Messages", i);
-                        fileConfiguration.save(file);
-                        bonusRoles.Member(i, event.getMessageAuthor().asUser().get());
+
+                        Boolean found = false;
+
+                        MessageSet messageSet = event.getChannel().getMessagesBefore(1, event.getMessage()).get();
+
+                        if (messageSet.getOldestMessage().get().getAuthor().equals(event.getMessageAuthor())) {
+                            found = true;
+                        }
+
+                        if (!found) {
+                            File file = FileSystem.file(event.getMessageAuthor().asUser().get());
+                            FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+                            int i = fileConfiguration.getInt("Messages") + 1;
+                            int gold = fileConfiguration.getInt("Gold") + 5;
+                            fileConfiguration.set("Gold", gold);
+                            fileConfiguration.set("Messages", i);
+                            fileConfiguration.save(file);
+                            bonusRoles.Member(i, event.getMessageAuthor().asUser().get());
+                        }
                     }
                 }
             } catch (Exception e) {
