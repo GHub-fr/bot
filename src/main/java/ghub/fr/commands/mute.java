@@ -40,7 +40,7 @@ public class mute {
                     if (HigherRole.isRoleHigher(sender, user)) {
                         user.sendMessage(embedBuilder);
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
-                        user.timeout(event.getInteraction().getServer().get(), date.toInstant(), raison);
+                        user.timeout(event.getInteraction().getServer().get(), date.toInstant(), raison).join();
                     }
 
                     InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = slashCommandInteraction
