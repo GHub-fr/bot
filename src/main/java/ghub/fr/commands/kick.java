@@ -32,7 +32,7 @@ public class kick {
                     if (HigherRole.isRoleHigher(sender, user)) {
                         user.sendMessage(embedBuilder);
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
-                        slashCommandInteraction.getServer().get().kickUser(user, raison);
+                        slashCommandInteraction.getServer().get().kickUser(user, raison).join();
                     }
 
                     InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = slashCommandInteraction
