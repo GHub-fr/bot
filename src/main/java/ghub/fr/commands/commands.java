@@ -29,8 +29,10 @@ public class commands {
                 profil.onProfil();
                 profil.onProfilUserContextMenu();
                 mute.setMute();
+                mute.removeMute();
                 kick.onKickUser();
                 ban.banUser();
+                ban.unbanUser();
                 addReaction.onAddReaction();
                 copyMessage.onCopyMessage();
                 createInvite.onCreateInvite();
@@ -47,9 +49,11 @@ public class commands {
                 arrays.add(Ping());
                 arrays.add(Profil());
                 arrays.add(Mute());
+                arrays.add(Unmute());
                 arrays.add(Kick());
                 arrays.add(addReaction());
                 arrays.add(Ban());
+                arrays.add(unBan());
                 arrays.add(copyMessage());
                 arrays.add(createInvite());
                 arrays.add(Help());
@@ -162,13 +166,23 @@ public class commands {
         }
 
         public static SlashCommandBuilder Mute() {
-                return new SlashCommandBuilder().setName("mute").setDescription("Rend muet un utilisateur")
+                return new SlashCommandBuilder().setName("mute").setDescription("Exclu un utilisateur")
                                 .addOption(option(SlashCommandOptionType.USER, "Utilisateur",
                                                 "Un utilisateur du serveur à rendre muet",
                                                 true))
                                 .addOption(option(SlashCommandOptionType.DECIMAL, "Minutes",
                                                 "Le temps en minutes pour le mute (1 à 43200 minutes [30j])", true))
                                 .addOption(option(SlashCommandOptionType.STRING, "Raison", "Raison du mute", true))
+                                .setDefaultEnabledForPermissions(PermissionType.MODERATE_MEMBERS);
+        }
+
+        public static SlashCommandBuilder Unmute() {
+                return new SlashCommandBuilder().setName("unmute").setDescription("Retire l'exclusion d'un utilisateur")
+                                .addOption(option(SlashCommandOptionType.USER, "Utilisateur",
+                                                "Un utilisateur du serveur à ne plus exclure",
+                                                true))
+                                .addOption(option(SlashCommandOptionType.STRING, "Raison",
+                                                "Raison du retrait de l'exclusion", true))
                                 .setDefaultEnabledForPermissions(PermissionType.MODERATE_MEMBERS);
         }
 
@@ -179,6 +193,15 @@ public class commands {
                                                 true))
                                 .addOption(option(SlashCommandOptionType.DECIMAL, "Jours",
                                                 "Le temps en jours pour la suppression des messages (1 à 7 jours)",
+                                                true))
+                                .addOption(option(SlashCommandOptionType.STRING, "Raison", "Raison du ban", true))
+                                .setDefaultEnabledForPermissions(PermissionType.BAN_MEMBERS);
+        }
+
+        public static SlashCommandBuilder unBan() {
+                return new SlashCommandBuilder().setName("unban").setDescription("Débanni un utilisateur")
+                                .addOption(option(SlashCommandOptionType.USER, "Utilisateur",
+                                                "Un utilisateur du serveur à débannir",
                                                 true))
                                 .addOption(option(SlashCommandOptionType.STRING, "Raison", "Raison du ban", true))
                                 .setDefaultEnabledForPermissions(PermissionType.BAN_MEMBERS);
