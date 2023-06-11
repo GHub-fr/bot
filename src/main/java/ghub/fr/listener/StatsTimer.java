@@ -132,6 +132,6 @@ public class StatsTimer {
 
     public static void setCounterOnCategory(int users) {
         int nextCap = (int) (Math.ceil((users + 1) / 10.0) * 10);
-        IDs.CategoryGHub.updateName("●▬▬▬▬▬▬▬▬๑ " + users + "/" + nextCap + " 🙋").join();
+        IDs.CategoryGHub.updateName("●▬▬▬▬▬▬▬▬๑ " + users + " / " + nextCap + " 🙋").join();
     }
 }
