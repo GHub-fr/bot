@@ -1,5 +1,6 @@
 package ghub.fr.listener;
 
+import org.javacord.api.entity.channel.ChannelCategory;
 import org.javacord.api.entity.message.embed.EmbedBuilder;
 import org.javacord.api.entity.permission.Role;
 import org.javacord.api.entity.user.User;
@@ -127,5 +128,10 @@ public class StatsTimer {
 
     public static String DateFormated(Date date) {
         return dateFormat().format(date);
+    }
+
+    public static void setCounterOnCategory(int users) {
+        int nextCap = (int) (Math.ceil(users / 10.0) * 10);
+        IDs.CategoryGHub.updateName("●▬▬๑ " + users + "/" + nextCap + " 🙋๑▬▬▬●").join();
     }
 }

@@ -9,6 +9,7 @@ public class IDs {
     public static final String MessageRoleGain = " Vous avez **__reçu le rôle__** : ";
     public static final String MessageRolePerte = " Vous avez **__perdu le rôle__** : ";
     //
+    public static final ChannelCategory CategoryGHub = main.api.getChannelCategoryById("1081936131542761634").get();
     public static final ChannelCategory CategoryTicket = main.api.getChannelCategoryById("1081946605680328874").get();
     public static final ChannelCategory CategoryRoles = main.api.getChannelCategoryById("1082074221871644824").get();
     public static final int defaultRoleSizeWithSplitterAndRulesAndEveryOne = RolesSplitterList().size() + 1 + 1;
