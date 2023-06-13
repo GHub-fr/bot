@@ -24,31 +24,8 @@ public class testping {
                 interactionImmediateResponseBuilder.respond();
                 if (slashCommandInteraction.getUser().isBotOwner()) {
                     try {
-                        for (User user : main.api.getServerById(IDs.serverID).get().getMembers()) {
-                            if (!user.isBot()) {
-                                slashCommandInteraction.getChannel().get()
-                                        .sendMessage(user.getDiscriminatedName())
-                                        .get();
-                                File file = FileSystem.file(user);
-                                if (file == null) {
-                                    slashCommandInteraction.getChannel().get()
-                                            .sendMessage("null")
-                                            .get();
-                                } else {
-                                    FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
 
-                                    slashCommandInteraction.getChannel().get()
-                                            .sendMessage("" +
-                                                    fileConfiguration.get("Gold"))
-                                            .get();
-                                }
-                            }
-                        }
-
-                        slashCommandInteraction.getChannel().get()
-                                .sendMessage(
-                                        "ghub.fr (Soon?)" + slashCommandInteraction.getChannel().get().getType())
-                                .get();
+                    
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
