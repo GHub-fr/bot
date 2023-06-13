@@ -37,27 +37,42 @@ public class casinoBanqueroute {
         });
     }
 
-    public static void doBanqueRoute(User user, ServerTextChannel serverTextChannel, int amount) throws IOException, InterruptedException, ExecutionException {
-        Boolean win = false;
-        int amountPlayed = 0;
-        int cost = getCost();
+    public static void doBanqueRoute(User user, ServerTextChannel serverTextChannel, int amount)
+            throws IOException, InterruptedException, ExecutionException {
+        Thread t = new Thread() {
+            int amount2 = amount;
 
-        while (amount > 0 && !win) {
-            win = doBanqueRoute(user, serverTextChannel, false);
+            public void run() {
+                try {
 
-            amountPlayed++;
-            amount--;
-        }
+                    Boolean win = false;
+                    int amountPlayed = 0;
+                    int cost = getCost();
 
-        if (win) {
-            int total = getTotal();
-            main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
-                    .sendMessage(casinoProfil.gainGold(user, total,
-                            "🎉 Félicitations ! " + amountPlayed + " tentatives", serverTextChannel));
-        } else {
-            main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
-                    .sendMessage(casinoProfil.gainGold(user, -cost, "Perdu " + amountPlayed + "x", serverTextChannel));
-        }
+                    while (amount2 > 0 && !win) {
+                        win = doBanqueRoute(user, serverTextChannel, false);
+
+                        amountPlayed++;
+                        amount2--;
+                    }
+
+                    if (win) {
+                        int total = getTotal();
+                        main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
+                                .sendMessage(casinoProfil.gainGold(user, total,
+                                        "🎉 Félicitations ! " + amountPlayed + " tentatives", serverTextChannel));
+                    } else {
+                        main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
+                                .sendMessage(casinoProfil.gainGold(user, -cost, "Perdu " + amountPlayed + "x",
+                                        serverTextChannel));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        t.start();
     }
 
     public static Boolean doBanqueRoute(User user, ServerTextChannel serverTextChannel, Boolean message)
