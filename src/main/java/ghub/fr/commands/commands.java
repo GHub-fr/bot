@@ -40,6 +40,7 @@ public class commands {
                 casinoCoinFlip.coinFlipCmd();
                 createButton.onCreateButton();
                 ip.onIP();
+                banqueRoute.banquerouteCMD();
         }
 
         public static List<SlashCommandBuilder> arrays() {
@@ -60,6 +61,7 @@ public class commands {
                 arrays.add(CoinFlip());
                 arrays.add(CreateButton());
                 arrays.add(IP());
+                arrays.add(BanqueRoute());
                 return arrays.stream().toList();
         }
 
@@ -163,6 +165,14 @@ public class commands {
                                 .addOption(option(SlashCommandOptionType.DECIMAL, "Argent",
                                                 "Argent à parier (0 par défaut)",
                                                 false));
+        }
+
+        public static SlashCommandBuilder BanqueRoute() {
+                return new SlashCommandBuilder().setName("banqueroute")
+                                .setDescription("Lance la Banque route plusieurs fois")
+                                .addOption(option(SlashCommandOptionType.DECIMAL, "Nombre de lancer",
+                                                "Le nombre de lancer à faire tant que vous n'avez pas gagné et de l'argent",
+                                                true));
         }
 
         public static SlashCommandBuilder Mute() {

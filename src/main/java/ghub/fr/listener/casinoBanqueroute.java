@@ -29,7 +29,7 @@ public class casinoBanqueroute {
                     event.removeReaction();
 
                     if (mentionTagEmoji.equals(IDs.EmojiBanque)) {
-                        doBanqueRoute(event.getUser().get(), event.getServerTextChannel().get());
+                        doBanqueRoute(event.getUser().get(), event.getServerTextChannel().get(), true);
                     }
                 }
             } catch (Exception e) {
@@ -37,7 +37,30 @@ public class casinoBanqueroute {
         });
     }
 
-    public static void doBanqueRoute(User user, ServerTextChannel serverTextChannel)
+    public static void doBanqueRoute(User user, ServerTextChannel serverTextChannel, int amount) throws IOException, InterruptedException, ExecutionException {
+        Boolean win = false;
+        int amountPlayed = 0;
+        int cost = getCost();
+
+        while (amount > 0 && !win) {
+            win = doBanqueRoute(user, serverTextChannel, false);
+
+            amountPlayed++;
+            amount--;
+        }
+
+        if (win) {
+            int total = getTotal();
+            main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
+                    .sendMessage(casinoProfil.gainGold(user, total,
+                            "🎉 Félicitations ! " + amountPlayed + " tentatives", serverTextChannel));
+        } else {
+            main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
+                    .sendMessage(casinoProfil.gainGold(user, -cost, "Perdu " + amountPlayed + "x", serverTextChannel));
+        }
+    }
+
+    public static Boolean doBanqueRoute(User user, ServerTextChannel serverTextChannel, Boolean message)
             throws IOException, InterruptedException, ExecutionException {
         int gold = casinoProfil.GetGold(user);
         int total = getTotal();// add 1k / day on it
@@ -46,17 +69,37 @@ public class casinoBanqueroute {
         if (gold >= cost) {
             double rng = Math.random();
             if (rng < 0.001) {
-                main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
-                        .sendMessage(casinoProfil.gainGold(user, total, "🎉 Félicitations !", serverTextChannel));
+                if (message) {
+                    main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
+                            .sendMessage(casinoProfil.gainGold(user, total, "🎉 Félicitations !", serverTextChannel));
+                } else {
+                    File file = FileSystem.file(user);
+                    FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+                    int Gold = fileConfiguration.getInt("Gold");
+                    fileConfiguration.set("Gold", Gold + total);
+                    fileConfiguration.save(file);
+                }
                 setTotal(-total);
+                updateMessage();
+                return true;
             } else {
-                main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
-                        .sendMessage(casinoProfil.gainGold(user, -cost, "Perdu", serverTextChannel));
+                if (message) {
+                    main.api.getServerTextChannelById(IDs.CasinoTextuelResultat).get()
+                            .sendMessage(casinoProfil.gainGold(user, -cost, "Perdu", serverTextChannel));
+                } else {
+                    File file = FileSystem.file(user);
+                    FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(file);
+                    int Gold = fileConfiguration.getInt("Gold");
+                    fileConfiguration.set("Gold", Gold - cost);
+                    fileConfiguration.save(file);
+                }
                 setTotal(cost);
+                updateMessage();
+                return false;
             }
-            updateMessage();
         } else {
             user.sendMessage("Vous n'avez pas assez d'argent pour jouer au" + serverTextChannel);
+            return true;
         }
     }
 
