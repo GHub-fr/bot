@@ -170,7 +170,7 @@ public class commands {
         public static SlashCommandBuilder BanqueRoute() {
                 return new SlashCommandBuilder().setName("banqueroute")
                                 .setDescription("Lance la Banque route plusieurs fois")
-                                .addOption(option(SlashCommandOptionType.DECIMAL, "Nombre de lancer",
+                                .addOption(option(SlashCommandOptionType.DECIMAL, "Lancer",
                                                 "Le nombre de lancer à faire tant que vous n'avez pas gagné et de l'argent",
                                                 true));
         }
