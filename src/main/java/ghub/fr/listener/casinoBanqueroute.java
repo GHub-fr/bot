@@ -132,6 +132,8 @@ public class casinoBanqueroute {
         EmbedBuilder embedBuilder = new EmbedBuilder();
 
         String message = "<t:" + time + ":R>\n"
+                + "/banqueroute Nombre de tentatives\n"
+                + "\n"
                 + "\n**__Faites faire faillite à la banque !__**\n"
                 + "\n"
                 + "Vous avez **__0.1% de chance de gagner__**\n"

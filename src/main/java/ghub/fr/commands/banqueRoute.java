@@ -18,7 +18,7 @@ public class banqueRoute {
                     InteractionImmediateResponseBuilder interactionImmediateResponseBuilder = slashCommandInteraction
                             .createImmediateResponder();
                     int tryAmount = (int) Math.round(slashCommandInteraction.getOptionDecimalValueByIndex(0).get());
-                    interactionImmediateResponseBuilder.setContent("\uD83D\uDC8E");
+                    interactionImmediateResponseBuilder.setContent("\uD83D\uDC8E Merci de patienter");
                     interactionImmediateResponseBuilder.respond();
 
                     casinoBanqueroute.doBanqueRoute(slashCommandInteraction.getUser(),
