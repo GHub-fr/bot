@@ -165,7 +165,7 @@ public class commands {
                                 .addOption(option(SlashCommandOptionType.DECIMAL, "Argent",
                                                 "Argent à parier (0 par défaut)",
                                                 false));
-        }
+        } 
 
         public static SlashCommandBuilder BanqueRoute() {
                 return new SlashCommandBuilder().setName("banqueroute")
