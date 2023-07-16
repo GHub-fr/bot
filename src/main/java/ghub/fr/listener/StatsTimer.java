@@ -68,7 +68,6 @@ public class StatsTimer {
                         + ":crescent_moon: **Absent** : " + IDLE + "\n" + ":robot: Bot : " + Bot;
 
                 Role everyone = IDs.RoleEveryone;
-                setCounterOnCategory(everyone.getUsers().size());
                 String everHereOne = rolesString(everyone);
                 String StringroleLess = IDs.EmojiRocket + " Sans rôle : " + roleLess;
                 String RulesOnly = IDs.RoleReglesValides.getMentionTag() + " uniquement : " + onlyRules;
@@ -86,6 +85,8 @@ public class StatsTimer {
                     main.api.getServerById(IDs.serverID).get().getChannelById(IDs.Statistiques).get()
                             .asServerTextChannel().get().getMessages(1).get().getOldestMessage().get()
                             .edit(embedBuilder);
+
+                    setCounterOnCategory(everyone.getUsers().size());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
