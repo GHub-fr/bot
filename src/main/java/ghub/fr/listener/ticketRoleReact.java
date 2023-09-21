@@ -60,7 +60,7 @@ public class ticketRoleReact {
                         serverTextChannel.sendMessage("L'" + IDs.RoleAssistance.getMentionTag() + " arrive bientôt\n\n"
                                 + event.getUser().get().getMentionTag()
                                 + " Pour toutes demandes, **questions**, **recrutements**, **__suggestions__**, ou tout **__bugs__**,\n"
-                                + ":scroll: Merci de bien vouloir :warning: **__préciser la raison__** :warning: en premier message\n"
+                                + ":scroll: Merci de bien vouloir :warning: **__préciser la raison__** :warning: en premier message\n**__Merci d'envoyer le message avant l'arrivé de l'"+IDs.RoleAssistance.getMentionTag()+"__**\n"
                                 + "Merci de consulter les "
                                 + main.api.getServerTextChannelById(IDs.Regles).get().getMentionTag()
                                 + " et notes sur les "
