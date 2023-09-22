@@ -131,8 +131,7 @@ public class StatsTimer {
         return dateFormat().format(date);
     }
 
-    public static void setCounterOnCategory(int users) {
-        int nextCap = (int) (Math.ceil((users + 1) / 10.0) * 10);
-        IDs.CategoryGHub.updateName("●▬▬▬▬▬▬▬▬▬๑ " + users + " / " + nextCap + " 🙋").join();
+    public static void setCounterOnCategory(int users, int online) {
+        IDs.CategoryGHub.updateName("●▬▬▬▬▬▬▬▬๑ " + users + "🙋" + " - " + online + "📡").join();
     }
 }
