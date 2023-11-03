@@ -86,7 +86,7 @@ public class StatsTimer {
                             .asServerTextChannel().get().getMessages(1).get().getOldestMessage().get()
                             .edit(embedBuilder);
 
-                    setCounterOnCategory(everyone.getUsers().size(), (Online + DND));
+                    setCounterOnCategory(everyone.getUsers().size(), (Online + DND + IDLE));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
