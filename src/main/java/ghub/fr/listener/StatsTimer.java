@@ -132,6 +132,6 @@ public class StatsTimer {
     }
 
     public static void setCounterOnCategory(int users, int online) {
-        IDs.CategoryGHub.updateName("●▬▬▬▬▬▬▬▬๑ " + users + "🙋" + " - " + online + "📡").join();
+        IDs.CategoryGHub.updateName("●▬▬▬▬▬▬▬▬๑ " + users + "🙋" + "   " + online + "🟢").join();
     }
 }
