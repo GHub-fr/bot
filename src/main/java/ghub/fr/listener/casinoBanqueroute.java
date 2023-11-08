@@ -113,7 +113,7 @@ public class casinoBanqueroute {
                 return false;
             }
         } else {
-            user.sendMessage("Vous n'avez pas assez d'argent pour jouer au" + serverTextChannel);
+            user.sendMessage("Vous n'avez pas assez d'argent pour jouer au" + serverTextChannel).get();
             return true;
         }
     }

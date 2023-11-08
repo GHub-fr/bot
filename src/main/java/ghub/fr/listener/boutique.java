@@ -1,6 +1,7 @@
 package ghub.fr.listener;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import ghub.fr.main.IDs;
 import ghub.fr.main.main;
@@ -33,7 +34,7 @@ public class boutique {
                             casinoProfil.msgPasAssezArgent(event.getUser().get(), IDs.prixVIP);
                         }
                     }
-                } catch (IOException e) {
+                } catch (IOException | InterruptedException | ExecutionException e) {
                     e.printStackTrace();
                 }
             }

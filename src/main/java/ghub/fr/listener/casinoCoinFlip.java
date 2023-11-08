@@ -1,6 +1,7 @@
 package ghub.fr.listener;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import org.javacord.api.entity.channel.ServerTextChannel;
 import org.javacord.api.entity.user.User;
@@ -29,7 +30,7 @@ public class casinoCoinFlip {
         });
     }
 
-    public static int doCoinFlip(User user, ServerTextChannel serverTextChannel, int prix) throws IOException {
+    public static int doCoinFlip(User user, ServerTextChannel serverTextChannel, int prix) throws IOException, InterruptedException, ExecutionException {
         int goldAmount = casinoProfil.GetGold(user);
         if (goldAmount >= prix) {
             double rng = Math.random();

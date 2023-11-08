@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class casinoProfil {
     public static EmbedBuilder profil(User user) throws IOException {
@@ -201,9 +202,7 @@ public class casinoProfil {
         return calendar.getTime();
     }
 
-    public static void msgPasAssezArgent(User user, int prix) throws IOException {
-        user.sendMessage("__**Vous n'avez pas assez d'argent**__.\nVous avez "
-                + casinoProfil.GetGold(user) + " sur " + prix
-                + IDs.EmojiMoneyWithWings + " requis");
+    public static void msgPasAssezArgent(User user, int prix) throws IOException, InterruptedException, ExecutionException {
+        user.sendMessage("__**Vous n'avez pas assez d'argent**__.\nVous avez " + casinoProfil.GetGold(user) + " sur " + prix + IDs.EmojiMoneyWithWings + " requis").get();
     }
 }

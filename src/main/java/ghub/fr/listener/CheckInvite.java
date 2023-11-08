@@ -113,7 +113,7 @@ public class CheckInvite {
                                 fileConfiguration.save(file);
                                 eventMsg = "\n\nTu est à " + fileConfiguration.getInt("event")
                                         + " invitations pour le concours ! \uD83C\uDF81 \uD83D\uDCC8";
-                                user.sendMessage(eventMsg);
+                                user.sendMessage(eventMsg).get();
                             }
                         }
 
@@ -180,7 +180,7 @@ public class CheckInvite {
                         main.api.getServerById(IDs.serverID).get().kickUser(user,
                                 "Auto kick " + monthToCheck + " mois");
 
-                        user.sendMessage(embedBuilder);
+                        user.sendMessage(embedBuilder).get();
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
                         main.api.getServerTextChannelById(IDs.AutoMod).get().sendMessage(embedBuilder);
                     } else if (dateUserJoinDiscord.after(dateNow2)) {

@@ -18,7 +18,7 @@ public class bonusRoles {
                 Role role = IDs.Rolemsg1000;
                 if (!user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(role)) {
                     user.addRole(role);
-                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName()).get();
                     embedBuilder.setDescription(messages.LevelUP(user, role, "1000 messages"));
                     main.api.getChannelById(IDs.Boost).get().asServerTextChannel().get().sendMessage(embedBuilder);
                 }
@@ -32,7 +32,7 @@ public class bonusRoles {
                 Role role = IDs.Rolemsg200;
                 if (!user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(role)) {
                     user.addRole(role);
-                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName()).get();
                     embedBuilder.setDescription(messages.LevelUP(user, role, "200 messages"));
                     main.api.getChannelById(IDs.Boost).get().asServerTextChannel().get().sendMessage(embedBuilder);
                 }
@@ -46,7 +46,7 @@ public class bonusRoles {
                 Role role = IDs.Rolemsg50;
                 if (!user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(role)) {
                     user.addRole(role);
-                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName()).get();
                     embedBuilder.setDescription(messages.LevelUP(user, role, "50 messages"));
                     main.api.getChannelById(IDs.Boost).get().asServerTextChannel().get().sendMessage(embedBuilder);
                 }
@@ -60,7 +60,7 @@ public class bonusRoles {
                 Role role = IDs.Rolemsg10;
                 if (!user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(role)) {
                     user.addRole(role);
-                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName()).get();
                     embedBuilder.setDescription(messages.LevelUP(user, role, "10 messages"));
                     main.api.getChannelById(IDs.Boost).get().asServerTextChannel().get().sendMessage(embedBuilder);
                 }
@@ -76,7 +76,7 @@ public class bonusRoles {
                 Role role = IDs.Roleinvites100;
                 if (!user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(role)) {
                     user.addRole(role);
-                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName()).get();
                     embedBuilder.setDescription(messages.LevelUP(user, role, "100 invitations"));
                     main.api.getChannelById(IDs.Boost).get().asServerTextChannel().get().sendMessage(embedBuilder);
                 }
@@ -90,7 +90,7 @@ public class bonusRoles {
                 Role role = IDs.Roleinvites50;
                 if (!user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(role)) {
                     user.addRole(role);
-                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName()).get();
                     embedBuilder.setDescription(messages.LevelUP(user, role, "50 invitations"));
                     main.api.getChannelById(IDs.Boost).get().asServerTextChannel().get().sendMessage(embedBuilder);
                 }
@@ -104,7 +104,7 @@ public class bonusRoles {
                 Role role = IDs.Roleinvites30;
                 if (!user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(role)) {
                     user.addRole(role);
-                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName()).get();
                     embedBuilder.setDescription(messages.LevelUP(user, role, "30 invitations"));
                     main.api.getChannelById(IDs.Boost).get().asServerTextChannel().get().sendMessage(embedBuilder);
                 }
@@ -118,7 +118,7 @@ public class bonusRoles {
                 Role role = IDs.Roleinvites10;
                 if (!user.getRoles(main.api.getServerById(IDs.serverID).get()).contains(role)) {
                     user.addRole(role);
-                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(user.getMentionTag() + IDs.MessageRoleGain + role.getName()).get();
                     embedBuilder.setDescription(messages.LevelUP(user, role, "10 invitations"));
                     main.api.getChannelById(IDs.Boost).get().asServerTextChannel().get().sendMessage(embedBuilder);
                 }

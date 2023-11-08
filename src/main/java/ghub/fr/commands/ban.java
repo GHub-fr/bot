@@ -46,7 +46,7 @@ public class ban {
                     main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder);
 
                     if (HigherRole.isRoleHigher(sender, user)) {
-                        user.sendMessage(embedBuilder);
+                        user.sendMessage(embedBuilder).get();
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
                         slashCommandInteraction.getServer().get().banUser(user, days, raison).join();
                     }
@@ -83,7 +83,7 @@ public class ban {
                     main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder);
 
                     if (HigherRole.isRoleHigher(sender, user)) {
-                        user.sendMessage(embedBuilder);
+                        user.sendMessage(embedBuilder).get();
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
                         slashCommandInteraction.getServer().get().unbanUser(user, raison).join();
                     }

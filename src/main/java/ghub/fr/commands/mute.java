@@ -40,7 +40,7 @@ public class mute {
                     main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder);
 
                     if (HigherRole.isRoleHigher(sender, user)) {
-                        user.sendMessage(embedBuilder);
+                        user.sendMessage(embedBuilder).get();
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
                         user.timeout(event.getInteraction().getServer().get(), date.toInstant(), raison).join();
                     }
@@ -81,7 +81,7 @@ public class mute {
                     main.api.getServerTextChannelById(IDs.LogsCmd).get().sendMessage(embedBuilder);
 
                     if (HigherRole.isRoleHigher(sender, user)) {
-                        user.sendMessage(embedBuilder);
+                        user.sendMessage(embedBuilder).get();
                         main.api.getServerTextChannelById(IDs.Sanctions).get().sendMessage(embedBuilder);
                         user.removeTimeout(event.getInteraction().getServer().get(), raison).join();
                     }

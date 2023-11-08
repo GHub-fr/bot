@@ -25,7 +25,7 @@ public class createInvite {
                     inviteBuilder.setMaxAgeInSeconds(0);
                     Invite invite = inviteBuilder.create().join();
                     slashCommandInteraction.getUser().sendMessage("Invitation crée par "
-                            + main.api.getYourself().getMentionTag() + " : **__" + invite.getUrl() + "__**");
+                            + main.api.getYourself().getMentionTag() + " : **__" + invite.getUrl() + "__**").get();
                 } catch (Exception e) {
                 }
             }
