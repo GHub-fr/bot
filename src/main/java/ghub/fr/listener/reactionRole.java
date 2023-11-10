@@ -85,7 +85,7 @@ public class reactionRole {
                             event.getEmoji().getMentionTag());
                     User user = event.getUser().get();
                     user.addRole(role);
-                    user.sendMessage(IDs.MessageRoleGain + role.getName());
+                    user.sendMessage(IDs.MessageRoleGain + role.getName()).join();
                 }
             }
         });
@@ -100,7 +100,7 @@ public class reactionRole {
                             event.getEmoji().getMentionTag());
                     User user = event.getUser().get();
                     user.removeRole(role);
-                    user.sendMessage(IDs.MessageRolePerte + role.getName());
+                    user.sendMessage(IDs.MessageRolePerte + role.getName()).join();
                 }
             }
         });
