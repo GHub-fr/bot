@@ -23,3 +23,6 @@ Bot Discord for GHub.fr [server](https://doc.ghub.fr/github/server)
 - [repo](https://github.com/Javacord/Javacord)
 - [site](https://javacord.org/)
 - [doc](https://javadoc.io/doc/org.javacord/javacord-api)
+
+# Configuration
+- [Discord token](https://github.com/GHub-fr/server/blob/main/DiscordBot/data/tokens.yml)
