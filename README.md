@@ -26,3 +26,6 @@ Bot Discord for GHub.fr [server](https://doc.ghub.fr/github/server)
 
 # Configuration
 - [Discord token](https://github.com/GHub-fr/server/blob/main/DiscordBot/data/tokens.yml)
+- [Discord channels ID](https://github.com/GHub-fr/bot/blob/main/src/main/java/ghub/fr/main/IDs.java)
+- [Main](https://github.com/GHub-fr/bot/blob/main/src/main/java/ghub/fr/main/main.java)
+- [Messages](https://github.com/GHub-fr/bot/blob/main/src/main/java/ghub/fr/api/messages.java)
